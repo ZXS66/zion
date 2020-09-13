@@ -44,6 +44,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "baseHref": "https://nextwave.gitee.io/app/",
               "budgets": [
                 {
                   "type": "initial",
