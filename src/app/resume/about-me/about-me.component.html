@@ -1,75 +1,55 @@
-
 <section>
     <mat-grid-list cols="12" rowHeight="20em" gutter="0.5em">
         <mat-grid-tile colspan="10">
-            basic information, coming soon
+            <div>
+                <h1>
+                    时代残党
+                    <a href="https://weibo.com/Junior_99" target="_blank">
+                        <fa-icon [icon]="icons.faWeibo"></fa-icon>
+                    </a>
+                    <a href="https://zixuephp.net/inc/qrcode_img.php?url=https%3A%2F%2Fu.wechat.com%2FENx87m7_oPP-mj2Ur-ffHIY"
+                        target="_blank">
+                        <fa-icon [icon]="icons.faWeixin"></fa-icon>
+                    </a>
+                    <a href="https://user.qzone.qq.com/546990481" target="_blank">
+                        <fa-icon [icon]="icons.faQq"></fa-icon>
+                    </a>
+                    <a href="mailto:zh_cn2008@hotmail.com">
+                        <fa-icon [icon]="icons.faEnvelope"></fa-icon>
+                    </a>
+                    <a href='https://gitee.com/nextwave/zion'>
+                        <img src='https://gitee.com/nextwave/zion/widgets/widget_5.svg' alt='Fork me on Gitee' />
+                    </a>
+                </h1>
+                <mat-chip-list>
+                    <mat-chip>C#</mat-chip>
+                    <mat-chip>ASP.NET</mat-chip>
+                    <mat-chip>Javascript</mat-chip>
+                    <mat-chip>Node</mat-chip>
+                    <mat-chip>Angular</mat-chip>
+                    <mat-chip>SQL</mat-chip>
+                    <mat-chip>SQL Server</mat-chip>
+                    <mat-chip>Python</mat-chip>
+                    <mat-chip>Flutter</mat-chip>
+                </mat-chip-list>
+            </div>
         </mat-grid-tile>
         <mat-grid-tile colspan="2">
-            <img src="assets/images/avator.jpg" alt="Avator">
+            <img src="https://nextwave.gitee.io/images/contact/avator.jpg" alt="Avator" class="mat-elevation-z2">
         </mat-grid-tile>
     </mat-grid-list>
 </section>
-<section>
-    <mat-card>
-        <mat-card-title>Work Experience</mat-card-title>
-        <mat-card-content>
-            <mat-list role="list">
-                <mat-list-item role="listitem">
-                    <h3 mat-line>Company A (from 2018.7 to now)</h3>
-                    <p mat-line>Blablabla...</p>
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <h3 mat-line>Company B (from 2012.2 to 2018.5)</h3>
-                    <p mat-line>Blablabla...</p>
-                </mat-list-item>
-            </mat-list>
-        </mat-card-content>
-    </mat-card>
-</section>
-<section>
-    <mat-card>
-        <mat-card-title>Project Experience</mat-card-title>
-        <mat-card-content>
-            <mat-list role="list">
-                <mat-list-item role="listitem">
-                    <h3 mat-line>project X</h3>
-                    <p mat-line>Blablabla...</p>
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <h3 mat-line>project Y</h3>
-                    <p mat-line>Blablabla...</p>
-                </mat-list-item>
-                <mat-list-item role="listitem">
-                    <h3 mat-line>project Z</h3>
-                    <p mat-line>Blablabla...</p>
-                </mat-list-item>
-            </mat-list>
-        </mat-card-content>
-    </mat-card>
-</section>
-<section>
-    <mat-card>
-        <mat-card-title>Eduction &amp; Credentials</mat-card-title>
-        <mat-card-content>
-            ECJTU
-        </mat-card-content>
-    </mat-card>
-</section>
-<section>
-    <mat-card>
-        <mat-card-title>Skills</mat-card-title>
-        <mat-card-content>
-            <mat-chip-list>
-                <mat-chip>C#</mat-chip>
-                <mat-chip>ASP.NET</mat-chip>
-                <mat-chip>Javascript</mat-chip>
-                <mat-chip>Node</mat-chip>
-                <mat-chip>Angular</mat-chip>
-                <mat-chip>SQL</mat-chip>
-                <mat-chip>SQL Server</mat-chip>
-                <mat-chip>Python</mat-chip>
-                <mat-chip>Flutter</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
+<section class="mat-elevation-z2">
+    <p>
+        工作八年，年逾三十的程序员一枚，目标全栈工程师，一直在努力的路上。特长前端及 <code>ASP.NET</code>，
+        数据库用 <code>SQL Server</code> 和 <code>MySQL</code>。经常使用的技术/框架有 <code>Angular</code>、
+        <code>Node</code>、<code>Typescript</code>、<code>Python</code> 等，爱好尝试各种新/流行技术，如
+        <code>Redis</code>、<code>Elasticsearch</code>、
+        <code>Flutter</code>、<code>微信小程序</code> 等等。大家可以通过上面的微信加好友或者邮件沟通，一起学习进步。 🙂
+    </p>
+    <p>
+        我最近在寻找新的工作机会，如感兴趣，请移步至
+        <button mat-stroked-button routerLink="/resume/2020">我的简历</button>
+        ，谢谢。
+    </p>
 </section>

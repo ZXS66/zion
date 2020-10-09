@@ -1,6 +1,22 @@
-img{
-    object-fit:cover;
+h1 a {
+  margin-left: 1em;
 }
-section{
-    margin: 1em 0;
+h1 a img {
+  height: 1em;
+}
+h1 a mat-icon {
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+}
+img {
+  object-fit: cover;
+  max-height: 128px;
+}
+section {
+  margin: 1em 0;
+}
+p {
+  text-indent: 2em;
+  padding: 1em;
 }

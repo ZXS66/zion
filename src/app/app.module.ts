@@ -5,17 +5,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-// import { SubMaterialModule } from './sub-material/sub-material.module';
+import { SubMaterialModule } from './sub-material/sub-material.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { UnknownComponent } from './unknown/unknown.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent,
+    ForbiddenComponent,
+    UnknownComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    // SubMaterialModule,
+    SubMaterialModule,
     AppRoutingModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
