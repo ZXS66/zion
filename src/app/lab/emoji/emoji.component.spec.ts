@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebworkerComponent } from './webworker.component';
+import { EmojiComponent } from './emoji.component';
 
-describe('WebworkerComponent', () => {
-  let component: WebworkerComponent;
-  let fixture: ComponentFixture<WebworkerComponent>;
+describe('EmojiComponent', () => {
+  let component: EmojiComponent;
+  let fixture: ComponentFixture<EmojiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WebworkerComponent ]
+      declarations: [ EmojiComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WebworkerComponent);
+    fixture = TestBed.createComponent(EmojiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

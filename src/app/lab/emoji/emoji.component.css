@@ -1,0 +1,6 @@
+.flex {
+  justify-content: space-between;
+}
+.flex > * {
+  margin-bottom: 2em;
+}

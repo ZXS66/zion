@@ -1,0 +1,26 @@
+<mat-form-field class="full-width" appearance="fill">
+    <mat-label>Search Term</mat-label>
+    <input matInput placeholder="type in to search emoji" (keydown)="doSearch($event)">
+</mat-form-field>
+
+<div *ngIf="data&&data.length" class="flex">
+    <mat-card *ngFor="let d of data">
+        <mat-card-title>{{d.name}}</mat-card-title>
+        <mat-card-content>
+            <dl>
+                <dt>Code Points</dt>
+                <dd>{{d.code_points}}</dd>
+                <dt>Group</dt>
+                <dd>{{d.group}}</dd>
+                <dt>Sub Group</dt>
+                <dd>{{d.sub_group}}</dd>
+            </dl>
+            <p>{{d.description}}</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button (click)="copy(d.name)">Copy</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<p class="text-center" *ngIf="!(data&&data.length)">NO emoji matched your search.</p>
