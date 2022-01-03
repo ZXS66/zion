@@ -10,20 +10,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { UnknownComponent } from './unknown/unknown.component';
+import { SitemapComponent } from './sitemap/sitemap.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     ForbiddenComponent,
-    UnknownComponent
+    UnknownComponent,
+    SitemapComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SubMaterialModule,
-    AppRoutingModule,
     FontAwesomeModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

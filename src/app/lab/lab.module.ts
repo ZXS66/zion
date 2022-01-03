@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { SitemapComponent } from './sitemap/sitemap.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { EmojiComponent } from './emoji/emoji.component';
 import { SubMaterialModule } from '../sub-material/sub-material.module';
+import { SearchMasterComponent } from './search-master/search-master.component';
 
 const labRoutes: Routes = [
   { path: 'emoji', component: EmojiComponent },
-  { path: 'sitemap', component: SitemapComponent },
   { path: 'unsubscribe', component: UnsubscribeComponent },
+  { path: 'search', component: SearchMasterComponent },
   { path: '', redirectTo: 'unsubscribe', pathMatch: 'full' }
 ];
 
 @NgModule({
-  declarations: [SitemapComponent, UnsubscribeComponent, EmojiComponent],
+  declarations: [UnsubscribeComponent, EmojiComponent, SearchMasterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(labRoutes),

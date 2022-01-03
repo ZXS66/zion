@@ -48,8 +48,14 @@ body {
 .flex .col-12 {
   flex-basis: 100%;
 }
+.align-items-baseline {
+  align-items: baseline;
+}
 .text-center {
   text-align: center;
+}
+.italic {
+  font-style: italic;
 }
 .full-width {
   width: 100%;
@@ -58,6 +64,7 @@ body {
 /** bootstrap grid media quries:
   https://getbootstrap.com/docs/5.1/layout/grid/#grid-options
 */
+/** col-sm-* */
 @media (max-width: 576px) {
   .flex .col-sm-1 {
     flex-basis: 8.3%;
@@ -96,6 +103,7 @@ body {
     flex-basis: 100%;
   }
 }
+/** col-md-* */
 @media (min-width: 576px) and (max-width: 768px) {
   .flex .col-md-1 {
     flex-basis: 8.3%;
@@ -134,6 +142,7 @@ body {
     flex-basis: 100%;
   }
 }
+/** col-lg-* */
 @media (min-width: 768px) and (max-width: 992px) {
   .flex .col-lg-1 {
     flex-basis: 8.3%;
@@ -172,6 +181,7 @@ body {
     flex-basis: 100%;
   }
 }
+/** col-xl-* */
 @media (min-width: 992px) {
   .flex .col-xl-1 {
     flex-basis: 8.3%;
