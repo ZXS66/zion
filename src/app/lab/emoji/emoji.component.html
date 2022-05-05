@@ -5,22 +5,23 @@
 
 <div *ngIf="data&&data.length" class="flex">
     <mat-card *ngFor="let d of data">
-        <mat-card-title>{{d.name}}</mat-card-title>
+        <mat-card-title>
+            <strong>{{d.name}}</strong>
+            <span title="Code Points">{{d.code_points}}</span>
+        </mat-card-title>
         <mat-card-content>
-            <dl>
-                <dt>Code Points</dt>
-                <dd>{{d.code_points}}</dd>
-                <dt>Group</dt>
-                <dd>{{d.group}}</dd>
-                <dt>Sub Group</dt>
-                <dd>{{d.sub_group}}</dd>
-            </dl>
+            <em title="Group">{{d.group}}</em>
+            /
+            <em title="Sub Group">{{d.sub_group}}</em>
             <p>{{d.description}}</p>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-button (click)="copy(d.name)">Copy</button>
+            <button mat-button (click)="copy(d.name)">
+                <mat-icon>content_copy</mat-icon>
+                Copy
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>
 
-<p class="text-center" *ngIf="!(data&&data.length)">NO emoji matched your search.</p>
+<p class="text-center" *ngIf="!(data&&data.length)">😟 NO emoji matched your search.</p>
