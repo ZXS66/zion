@@ -42,7 +42,7 @@ const loadEmojiMetadata = async () => {
     // loaded
     return;
   }
-  const fileLink = 'https://nextwave.gitee.io/images/emoji-knowledge-review/full-emoji-list.json';
+  const fileLink = 'https://zxs66.github.io/images/emoji-knowledge-review/full-emoji-list.json';
   const handleError = (err) => {
     console.error(err);
     EMOJIMETADATA_CACHE = new Set();
