@@ -1,3 +1,4 @@
+
 /** utility collection */
 export const Utility = {
     /** get format date string */
@@ -11,7 +12,7 @@ export const Utility = {
         // throw "invalid Date object.";
     },
     /** get date (string) by ISO string (yyyy-MM-ddThh:mm:ss) */
-    getDateByISOString(isoString: string) {
+    getDateByISOString(isoString: string): string {
         if (Utility.isNotEmptyString(isoString)) {
             if (isoString.indexOf('T') !== -1) {
                 // isoString pattern: yyyy-MM-ddThh:mm:ss
@@ -34,8 +35,9 @@ export const Utility = {
     },
     /** compare two strings, trimmed and ignore case  */
     isIdenticalString(strA: string, strB: string, trim = true, ignoreCase = true): boolean {
-        if (typeof strA !== 'string' || typeof strB !== 'string')
+        if (typeof strA !== 'string' || typeof strB !== 'string') {
             throw new Error('the two argument must be string!');
+        }
         if (trim) {
             strA = strA.trim(); strB = strB.trim();
         }
@@ -45,7 +47,7 @@ export const Utility = {
         return strA === strB;
     },
     /** compare two date instances, only year, month and day of month will be included  */
-    isIdenticalDate(dateA: Date, dateB: Date) {
+    isIdenticalDate(dateA: Date, dateB: Date): boolean {
         return dateA instanceof Date &&
             dateB instanceof Date &&
             dateA.getFullYear() === dateB.getFullYear() &&
@@ -56,15 +58,15 @@ export const Utility = {
      * compare two number, num1 and num2
      * @returns 1 if num1 is greater than num2, -1 if num1 is less than num2, 0 if they are equal
      */
-    compareNumber(num1: number, num2: number) {
+    compareNumber(num1: number, num2: number): number {
         return num1 > num2 ? 1 : num1 < num2 ? -1 : 0;
     },
     /** parse string as boolean value */
-    parseBoolean(value: string) {
+    parseBoolean(value: string): boolean {
         if (Utility.isNotEmptyString(value)) {
             const valueTrim = value.trim().toLowerCase();
             const valueNum = Number.parseFloat(valueTrim);
-            return isNaN(valueNum) ? ['t', 'true', 'y', 'yes',].includes(valueTrim) : valueNum > 0;
+            return isNaN(valueNum) ? ['t', 'true', 'y', 'yes'].includes(valueTrim) : valueNum > 0;
         } else if (typeof (value) === 'number') {
             return value > 0;
         }
@@ -78,15 +80,17 @@ declare global {
         /** push multiple items */
         pushRange(subset: Array<T>): Array<T>;
         /** group object array by property */
-        groupBy(prop: string): { [key: string]: Array<T> }
+        groupBy(prop: string): { [key: string]: Array<T> };
     }
 }
+
 Array.prototype.pushRange = function (subset) {
     if (Utility.isNotEmptyArray(subset)) {
         subset.forEach(d => this.push(d));
     }
     return this;
-}
+};
+
 Array.prototype.groupBy = function (prop: string) {
     const result = {};
     this.forEach((d) => {
@@ -97,7 +101,8 @@ Array.prototype.groupBy = function (prop: string) {
         result[propValue].push(d);
     });
     return result;
-}
+};
+
 // ployfill for Array.prototype.includes
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
 if (!Array.prototype.includes) {
@@ -123,7 +128,7 @@ if (!Array.prototype.includes) {
             //  a. Let k be len + n.
             //  b. If k < 0, let k be 0.
             let k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
-            function sameValueZero(x, y) {
+            function sameValueZero(x, y): boolean {
                 return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
             }
             // 7. Repeat, while k < len

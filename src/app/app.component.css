@@ -4,13 +4,10 @@ article {
   margin: 0 auto;
 }
 
-article section{
-    min-height: 80vh;
+article section {
+  min-height: 80vh;
 }
 
-article footer {
-  margin-top: 1em;
-}
 article footer a {
   text-decoration: none;
 }

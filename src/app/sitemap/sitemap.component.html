@@ -1,4 +1,4 @@
-<h5>网站导航</h5>
+<h5>Sitemap</h5>
 
 <mat-list>
     <ng-container *ngFor="let item of sitemap">
@@ -11,20 +11,24 @@
                 </span>
             </div>
             <mat-list-item *ngFor="let child of item.children">
-                <!-- link of the group -->
-                <div class="flex align-items-baseline">
-                    <a mat-button [routerLink]="child.link" class="col-sm-12 col-md-3 col-lg-2">{{child.title||child.link}}</a>
-                    <div class="col-sm-12 col-md-9 col-lg-10">{{child.introduction}}</div>
-                </div>
+                <!-- links of the group -->
+                <a mat-button [routerLink]="child.link" mat-list-icon>
+                    <fa-icon *ngIf="child.icon" [icon]="child.icon"></fa-icon>
+                    <fa-icon *ngIf="!(child.icon)" [icon]="noIcon"></fa-icon>
+                </a>
+                <strong mat-line>{{child.title||child.link}}</strong>
+                <div mat-line>{{child.introduction}}</div>
             </mat-list-item>
             <mat-divider></mat-divider>
         </ng-container>
         <mat-list-item *ngIf="!(item.children?.length)">
             <!-- just a link -->
-            <div class="flex align-items-baseline">
-                <a mat-button [routerLink]="item.link" class="col-sm-12 col-md-3 col-lg-2">{{item.title||item.link}}</a>
-                <div class="col-sm-12 col-md-9 col-lg-10">{{item.introduction}}</div>
-            </div>
+            <a mat-button [routerLink]="item.link" mat-list-icon>
+                <fa-icon *ngIf="item.icon" [icon]="item.icon"></fa-icon>
+                <fa-icon *ngIf="!(item.icon)" [icon]="noIcon"></fa-icon>
+            </a>
+            <strong mat-line>{{item.title||item.link}}</strong>
+            <div mat-line>{{item.introduction}}</div>
         </mat-list-item>
     </ng-container>
 </mat-list>
