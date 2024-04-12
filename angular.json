@@ -45,7 +45,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "baseHref": "https://zxs66.github.io/app/",
+              "baseHref": "https://johnzhu.online/ng/",
               "budgets": [
                 {
                   "type": "initial",

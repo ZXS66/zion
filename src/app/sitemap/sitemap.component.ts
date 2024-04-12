@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   IconDefinition
 } from '@fortawesome/fontawesome-svg-core';
-import { faGrin } from '@fortawesome/free-solid-svg-icons';
+import { faGrin, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faMap, faStopCircle, faUser, faCircle } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
