@@ -7,15 +7,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { Resume2020Component } from './resume2020/resume2020.component';
 import { SubMaterialModule } from '../sub-material/sub-material.module';
+import { Resume2024Component } from './resume2024/resume2024.component';
 
 const resumeRoutes: Routes = [
+  { path: '2024', component: Resume2024Component },
   { path: '2020', component: Resume2020Component },
   { path: 'aboutme', component: AboutMeComponent },
   { path: '', redirectTo: 'aboutme', pathMatch: 'full' }
 ];
 
 @NgModule({
-  declarations: [AboutMeComponent, Resume2020Component, AboutMeComponent],
+  declarations: [AboutMeComponent, Resume2020Component, AboutMeComponent, Resume2024Component],
   imports: [
     CommonModule,
     RouterModule.forChild(resumeRoutes),
