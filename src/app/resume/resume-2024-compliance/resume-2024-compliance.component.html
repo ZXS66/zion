@@ -1,0 +1,182 @@
+<article class="flex">
+    <div class="col-3 mat-elevation-z2 basic">
+        <div>
+            <img src="/blog/images/contact/resume%20avator.jpg" alt="我的头像">
+            <h3>朱浔生</h3>
+            <div>求职意向：合规经理</div>
+        </div>
+        <mat-list role="list">
+            <mat-list-item>
+                <a mat-button href="tel:13122652725">
+                    <fa-icon [icon]="icons.faPhone"></fa-icon>
+                    13122652725
+                </a>
+            </mat-list-item>
+            <mat-list-item>
+                <a mat-button href="mailto:zh_cn2008@hotmail.com">
+                    <fa-icon [icon]="icons.faEnvelope"></fa-icon>
+                    zh_cn2008@hotmail.com
+                </a>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button (click)="showWeChatQRCode()">
+                    <fa-icon [icon]="icons.faWeixin"></fa-icon>
+                    ZXS-WeChat
+                </button>
+            </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <section>
+            <header>
+                <fa-icon [icon]="icons.faCogs"></fa-icon>
+                职业技能
+            </header>
+            <mat-list role="list">
+                <mat-list-item>第三方尽调</mat-list-item>
+                <mat-list-item>飞检</mat-list-item>
+                <mat-list-item>数据分析</mat-list-item>
+                <mat-list-item>风险仪表盘</mat-list-item>
+                <mat-list-item>系统数字化</mat-list-item>
+                <mat-list-item>Power BI</mat-list-item>
+                <mat-list-item>SQL</mat-list-item>
+                <mat-list-item>Python</mat-list-item>
+            </mat-list>
+        </section>
+        <mat-divider></mat-divider>
+        <section>
+            <header>
+                <fa-icon [icon]="icons.faGraduationCap"></fa-icon>
+                教育背景及证书
+            </header>
+            <mat-list>
+                <mat-list-item>
+                    <div>
+                        <!-- <header><img src="https://www.ecjtu.edu.cn/images/logo20210811.png" alt="华东交通大学"></header> -->
+                        <header matListItemTitle>华东交通大学（软件+信息工程专业）</header>
+                        <div matListItemLine>2008.9 至 2012.6</div>
+                    </div>
+                </mat-list-item>
+                <mat-list-item>
+                    <div>
+                        <header matListItemTitle>软件设计师</header>
+                        <div matListItemLine>2011.5 签发</div>
+                    </div>
+                </mat-list-item>
+                <mat-list-item>
+                    <div>
+                        <header matListItemTitle>国际信息系统审计师 (CISA)</header>
+                        <div matListItemLine>2020.8 签发</div>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </section>
+    </div>
+    <div class="col-9 experience">
+        <section>
+            <header>
+                <fa-icon [icon]="icons.faUserAlt"></fa-icon>
+                自我评价
+            </header>
+            <p>在安永就职期间，与多家药企甲方合作，深度参与第三方尽调、飞检、内审合规系统搭建等多个项目，熟悉业务流程。在加入安永之前，深耕IT行业多年。致力于在药品行业中担任合规经理，利用我的专业知识和项目管理经验，确保公司遵循相关法规和标准，推动合规文化的建立与发展。
+            </p>
+        </section>
+        <section>
+            <header>
+                <fa-icon [icon]="icons.faCode"></fa-icon>
+                项目经验
+            </header>
+            <section>
+                <header>企业第三方合规风险管理系统</header>
+                <div class="sub-title">2023.4 至今</div>
+                <p>
+                    领导8人开发小组，初期与客户多部门沟通梳理业务需求，确定技术选型；中期确认原型，与IT对接系统及软硬件配置等；后期部署至Azure云。历时六个月上线并运维至今。与传统手工流程相比，客户第三方准入流程从数周缩短至3-5天，极大缩短了合规与业务来回沟通的成本，将相关风险点前置，确保与第三方签约前已拿到足够的审批。同时在一期系统上线后，与客户合规进一步合作，开发了风险仪表盘，实现第三方风险可视化及预警。采用的技术包括但不限于：Docker、React、Python、dotnet
+                    Core、Azure SQL、Linux、Power BI。
+                </p>
+                <p>
+                    此项目促进客户部门间的协作关系，集成了企业内外部数据，构建了统一的数据驱动平台，赋予客户合规和财务多维度审核第三方风险能力，并持续监控。
+                </p>
+            </section>
+            <section>
+                <header>企业第三方尽职调查平台</header>
+                <div class="sub-title">2019.7 至今</div>
+                <p>从零开始设计、开发、部署和运维企业第三方尽职调查平台至今，将传统的合规尽职调查报告数字化、自动化，根据企业行业特征和风险偏好，定制开发风险积分卡，助力企业审查第三方并持续监控风险。采用的技术包括但不限于：天眼查API（国内第三方信息主要数据源）、D&B
+                    Hoovers/Factiva API（境外第三方信息主要数据源）、SQL Server等。该平台具备以下特点：</p>
+                <ol>
+                    <li>注重数据安全。所有的数据均存储在企业内部的，零信任的服务器内，仅项目相关人员才能通过多重身份认证才能访问，确保客户数据的保密性，保障第三方尽调过程中涉及的企业机密信息不被泄漏和篡改；</li>
+                    <li>多租户模式，通过与企业深入沟通和了解实际业务需求，根据其特定行业、地域及风险偏好，为不同客户/第三方可定制不同的风险模型，全面评估第三方合作伙伴的合规性；</li>
+                    <li>采用敏捷开发，尽量采用自动化工具，收集不同数据源（外部公开数据、企业内部数据、订阅数据等）以及运算；</li>
+                    <li>搭建运营团队，建立高效的团队协作机制，确保每个尽调需求能够在约定的时间内交付；</li>
+                    <li>统一的尽调报告查看平台，支持用户调整报告风险及上传证据，自动记录审计痕迹。</li>
+                </ol>
+            </section>
+            <section>
+                <header>企业商业秘密外发仪表盘</header>
+                <div class="sub-title">2022.8 - 2023.7</div>
+                <p>协助企业搭建合规数据仓库，定制化设计关键风险指标，实现风险数据 T+1 展示（部分数据/风险实时展示）。采用的技术包括但不限于：Splunk、SQL
+                    Server、SSIS、Tableau、Kettle、dotnet Core、Power BI。</p>
+                <p>首先，使用Splunk进行日志和数据的收集和初步分析。通过配置Splunk索引，实时监控企业内部网络行为和系统活动，检测潜在的风险。利用Splunk强大的搜索和可视化功能，快速定位异常行为，生成相应的风险报告和风险警示；其次，基于SQL
+                    Server搭建数据仓库和风险模型，将Splunk中的数据通过ETL（Kettle）导入与企业商业秘密风险紧密相关的数据，供企业内审/合规员工进行数据分析；最后，基于Power
+                    BI搭建风险仪表盘，实现风险汇总数据可视化展示（按员工、部门、场景等不同维度）、关键风险指标及对应发现展示、以及历史趋势分析。</p>
+            </section>
+            <section>
+                <header>飞检平台搭建</header>
+                <div class="sub-title">2021.8 - 2022.4</div>
+                <p>协助企业搭建一站式的飞检平台。该系统旨在通过信息化手段，提升企业对飞检的准备和响应能力，确保在飞检过程中能够高效、规范地应对各类检查。该平台主要分会前抽样、会中执行、会后报告三大模块。</p>
+                <p>该系统支持会议数据收集、预定会议、审批、飞检抽样及人员安排、会议时间表、会议实时拍照录像、会议风险评估及展示、合规风险数据分析和报告生成等功能，协助管理层更好地了解飞检的风险及趋势。</p>
+            </section>
+            <section>
+                <header>负面舆情监测平台</header>
+                <div class="sub-title">2021.12 至今</div>
+                <p>
+                    基于<a href="https://www.elastic.co/cn/elastic-stack/" mat-button>ELK技术栈</a>，搭建统一的负面舆情监控平台，持续关注审计客户及其第三方的负面舆情风险，极大缩减企业人力成本。采用的技术包括但不限于：Elasticsearch、Kibana、Python、Node、Playwright、Redis、Pandas。该平台具备以下能力：
+                </p>
+                <ol>
+                    <li>集成消息队列，支持多生产者和多消费者，突破传统爬虫单节点限制（被目标网站禁止访问）；</li>
+                    <li>支持国内外主流媒体的新闻爬取，支持非静态网页（使用js、xhr等技术生成内容）内容爬取；</li>
+                    <li>使用Kibana面板实时查看任务进度，关键词搜索等；</li>
+                    <li>使用NLP（自然语言处理）等技术对舆情数据进行情感分析和关键词提取；</li>
+                    <li>支持人工审核，进一步降低误命中率；</li>
+                    <li>为每个任务自动生成关键内容总结，支持原始数据导出（RESTful API/Excel提供下游团队继续分析用途）。</li>
+                </ol>
+            </section>
+            <section>
+                <header>风险控制矩阵管理平台</header>
+                <div class="sub-title">2020.11 - 2021.5</div>
+                <p>协助企业内审及合规部门，搭建企业风险控制矩阵管理平台，支持定期推送至利益相关者重新审核、根据风险自动/手动生成审计计划、查看审计底稿、跟踪审计发现、跟进整改、查看审计发现报告等。</p>
+            </section>
+            <section>
+                <header>Social Insight Service</header>
+                <div class="sub-title">2012.12 - 2018.4</div>
+                <p>
+                    一个持续迭代的微软社区（MSDN、ASP.NET、MS community、Azure、Stackoverflow、Office 365等）分析平台。从Silverlight技术起步，后经改造成
+                    HTML5 网站。可监测社区中的Top Influencers、Top Threads、Top Forums以及Top
+                    Tags等等。后期扩展到其他主流程序员常访问平台（GitHub、Meetup、Wordpress、CSDN、RSDN、Gitee等）。我的职责：重构平台，设计并编写主要页面，包括样式布局、js代码以及
+                    asp.net 后台访问数据库等。独立完成收藏夹、日志、缓存等功能，参与实现订阅等功能。完成单元测试，并审阅代码质量。编写自定义js控件。
+                </p>
+            </section>
+        </section>
+        <section>
+            <header>
+                <fa-icon [icon]="icons.faBriefcase"></fa-icon>
+                工作经历
+            </header>
+            <mat-list role="lsit">
+                <mat-list-item>
+                    <span mat-list-icon>
+                        <img src="/blog/images/contact/EY_Logo.png" alt="EY">
+                    </span>
+                    <h4 mat-line>安永会计师事务所</h4>
+                    <p class="sub-title" mat-line>经理，2018.7 至今</p>
+                </mat-list-item>
+                <mat-list-item>
+                    <span mat-list-icon>
+                        <img src="/blog/images/contact/wicresoft-logo-blue-header.png"
+                            alt="Wicresoft">
+                    </span>
+                    <h4 mat-line>上海微创软件</h4>
+                    <p class="sub-title" mat-line>高级开发工程师，外派至微软，2012.2 至 2018.5 </p>
+                </mat-list-item>
+            </mat-list>
+        </section>
+    </div>
+</article>
