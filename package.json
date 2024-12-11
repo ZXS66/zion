@@ -1,10 +1,10 @@
 {
   "name": "zion",
-  "version": "2024.9.3",
+  "version": "2024.11.24",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng run zion:build:production",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && ng run zion:build:production",
     "publish": "scp -r ./dist/zion/* johnzhu@johnzhu.online:~/apps/ng",
     "test": "ng test",
     "lint": "ng lint",
