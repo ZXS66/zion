@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { UnknownComponent } from './unknown/unknown.component';
 import { SitemapComponent } from './sitemap/sitemap.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SitemapComponent } from './sitemap/sitemap.component';
     DatePipe,
     DecimalPipe,
     DocumentTitleService,
-    BroadcastService
+    BroadcastService,
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
