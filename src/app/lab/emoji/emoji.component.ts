@@ -20,7 +20,7 @@ export class EmojiComponent implements OnInit {
   ngOnInit(): void {
     // register web worker
     if (typeof Worker !== 'undefined') {
-      this.webWorker = new Worker('../emoji-ww.worker', { type: 'module' });
+      this.webWorker = new Worker(new URL('../emoji-ww.worker', import.meta.url), { type: 'module' });
       this.webWorker.addEventListener('message', ({ data }) => {
         const theMessage = data as WorkerMessage;
         const theAction = theMessage.action;
