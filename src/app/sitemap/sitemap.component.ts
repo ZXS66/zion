@@ -6,9 +6,10 @@ import { faGrin, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faMap, faStopCircle, faUser, faCircle } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
-  selector: 'app-sitemap',
-  templateUrl: './sitemap.component.html',
-  styleUrls: ['./sitemap.component.css']
+    selector: 'app-sitemap',
+    templateUrl: './sitemap.component.html',
+    styleUrls: ['./sitemap.component.css'],
+    standalone: false
 })
 export class SitemapComponent implements OnInit {
 

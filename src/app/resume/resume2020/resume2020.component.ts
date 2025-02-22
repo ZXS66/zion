@@ -6,9 +6,10 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faWeibo, faWeixin, faQq, faCss3, faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
-  selector: 'app-resume2020',
-  templateUrl: './resume2020.component.html',
-  styleUrls: ['./resume2020.component.css']
+    selector: 'app-resume2020',
+    templateUrl: './resume2020.component.html',
+    styleUrls: ['./resume2020.component.css'],
+    standalone: false
 })
 export class Resume2020Component implements OnInit {
 

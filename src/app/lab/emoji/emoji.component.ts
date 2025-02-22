@@ -3,9 +3,10 @@ import { WorkerMessage, WorkerAction } from 'src/app/worker-common.model';
 import { EmojiMetadata } from 'src/app/common.model';
 
 @Component({
-  selector: 'app-emoji',
-  templateUrl: './emoji.component.html',
-  styleUrls: ['./emoji.component.css']
+    selector: 'app-emoji',
+    templateUrl: './emoji.component.html',
+    styleUrls: ['./emoji.component.css'],
+    standalone: false
 })
 export class EmojiComponent implements OnInit {
 

@@ -5,9 +5,10 @@ import { faCopy, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faWeibo, faWeixin, faQq, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
-  selector: 'app-about-me',
-  templateUrl: './about-me.component.html',
-  styleUrls: ['./about-me.component.css']
+    selector: 'app-about-me',
+    templateUrl: './about-me.component.html',
+    styleUrls: ['./about-me.component.css'],
+    standalone: false
 })
 export class AboutMeComponent implements OnInit {
 

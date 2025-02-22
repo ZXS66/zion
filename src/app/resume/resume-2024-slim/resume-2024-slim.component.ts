@@ -8,9 +8,10 @@ import { DialogMyWechatQrcode } from '../dialog-wechat-qrcode/dialog-wechat-qrco
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-resume-2024-slim',
-  templateUrl: './resume-2024-slim.component.html',
-  styleUrls: ['./resume-2024-slim.component.css']
+    selector: 'app-resume-2024-slim',
+    templateUrl: './resume-2024-slim.component.html',
+    styleUrls: ['./resume-2024-slim.component.css'],
+    standalone: false
 })
 export class Resume2024SlimComponent implements OnInit {
 
