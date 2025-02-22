@@ -69,19 +69,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "zion:build",
-            "ssl": true
+            "ssl": true,
+            "buildTarget": "zion:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "zion:build:production"
+              "buildTarget": "zion:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "zion:build"
+            "buildTarget": "zion:build"
           }
         },
         "test": {
