@@ -10,7 +10,7 @@
 # dependencies
 /node_modules
 # no commit to avoid unnecessary merge conflicts/incorrect github dependabot alerts
-package-lock.json
+/package-lock.json
 
 # profiling files
 chrome-profiler-events*.json
