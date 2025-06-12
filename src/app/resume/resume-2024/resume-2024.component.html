@@ -1,7 +1,7 @@
 <article class="flex">
     <div class="col-3 mat-elevation-z2 basic">
         <div>
-            <img src="https://zxs66.github.io/images/contact/resume%20avator.jpg" alt="我的头像">
+            <img [src]="img_base+'contact/resume%20avator.jpg'" alt="我的头像">
             <h3>朱浔生</h3>
             <div>求职意向：全栈开发/系统架构</div>
         </div>
@@ -97,18 +97,28 @@
                 <header>企业第三方合规风险管理系统</header>
                 <div class="sub-title">2023.4 至今</div>
                 <p>
-                    领导8人开发小组，初期与客户多部门梳理业务需求，确定技术选型；中期与客户IT沟通SSO集成、虚拟机配置等；后期部署至Azure云。历时六个月上线并运维至今。与旧的系统相比，客户第三方准入流程从数周缩短至3-5天，极大缩短了合规与业务来回沟通的成本。同时在一期系统上线后，与客户合规进一步合作，开发了风险仪表盘，实现第三方风险可视化及预警。采用的技术包括但不限于：Docker、React、Python、dotnet Core、Azure SQL、Linux、Power BI。
+                    领导8人开发小组，初期与客户多部门梳理业务需求，确定技术选型；中期与客户IT沟通SSO集成、虚拟机配置等；后期部署至Azure云。历时六个月上线并运维至今。与旧的系统相比，客户第三方准入流程从数周缩短至3-5天，极大缩短了合规与业务来回沟通的成本。同时在一期系统上线后，与客户合规进一步合作，开发了风险仪表盘，实现第三方风险可视化及预警。采用的技术包括但不限于：Docker、React、Python、dotnet
+                    Core、Azure SQL、Linux、Power BI。
                 </p>
                 <p>
-                    首先，我们选择了Azure作为云服务提供商，利用其强大的计算、存储和网络资源，构建了可靠、安全的基础架构。我们使用Azure的虚拟机和容器服务来部署应用程序和服务，保证了系统的高可用性和可伸缩性。其次，我们采用了.NET Core框架来开发平台的后端服务。借助.NET Core的跨平台特性和高性能，我们能够快速开发和部署应用程序，同时实现了与Azure云服务的无缝集成。我们利用ASP.NET Core构建了RESTful API，为前端页面提供数据支持，并实现了用户单点登录认证（SSO）和基于角色的权限管理等功能。接着，我们选用了Azure SQL作为主要的关系型数据库，用于存储企业的第三方合作伙伴信息和准入评估的结构化数据。通过Azure SQL的高可用性和安全性特性，我们保障了数据的可靠性和保密性，并利用其强大的查询和分析功能，实现了对数据的高效管理和利用。此外，我们利用Blob Storage作为平台的文件存储解决方案，用于存储合作伙伴提供的证件、合同和其他相关文件。我们还使用了Python脚本来实现一些定制化的数据处理和分析任务。通过编写Python脚本，我们能够对大量的数据进行快速处理和分析，实现了诸如数据清洗、统计分析和机器学习模型训练等功能，为企业提供了更深入的洞察和决策支持。最后，我们利用Power BI创建了仪表盘和报表，用于可视化企业第三方准入的关键指标和趋势。通过与Azure SQL和Blob Storage的集成，我们能够实时地从数据库和文件存储中获取数据，并将其呈现为直观的图表和图形，帮助企业管理层和风险团队及时了解第三方准入的状况，并做出相应的决策。
+                    首先，我们选择了Azure作为云服务提供商，利用其强大的计算、存储和网络资源，构建了可靠、安全的基础架构。我们使用Azure的虚拟机和容器服务来部署应用程序和服务，保证了系统的高可用性和可伸缩性。其次，我们采用了.NET
+                    Core框架来开发平台的后端服务。借助.NET Core的跨平台特性和高性能，我们能够快速开发和部署应用程序，同时实现了与Azure云服务的无缝集成。我们利用ASP.NET
+                    Core构建了RESTful API，为前端页面提供数据支持，并实现了用户单点登录认证（SSO）和基于角色的权限管理等功能。接着，我们选用了Azure
+                    SQL作为主要的关系型数据库，用于存储企业的第三方合作伙伴信息和准入评估的结构化数据。通过Azure
+                    SQL的高可用性和安全性特性，我们保障了数据的可靠性和保密性，并利用其强大的查询和分析功能，实现了对数据的高效管理和利用。此外，我们利用Blob
+                    Storage作为平台的文件存储解决方案，用于存储合作伙伴提供的证件、合同和其他相关文件。我们还使用了Python脚本来实现一些定制化的数据处理和分析任务。通过编写Python脚本，我们能够对大量的数据进行快速处理和分析，实现了诸如数据清洗、统计分析和机器学习模型训练等功能，为企业提供了更深入的洞察和决策支持。最后，我们利用Power
+                    BI创建了仪表盘和报表，用于可视化企业第三方准入的关键指标和趋势。通过与Azure SQL和Blob
+                    Storage的集成，我们能够实时地从数据库和文件存储中获取数据，并将其呈现为直观的图表和图形，帮助企业管理层和风险团队及时了解第三方准入的状况，并做出相应的决策。
                 </p>
             </section>
             <section>
                 <header>企业第三方尽职调查平台</header>
                 <div class="sub-title">2019.7 至今</div>
-                <p>从零开始设计、开发、部署和运维企业第三方尽职调查平台至今，将传统的合规尽职调查报告数字化、自动化，根据企业行业特点和风险偏好，定制开发风险积分卡，助力企业审查第三方并持续监控风险。采用的技术包括但不限于：天眼查API（国内第三方主要数据源）、D&B Hoovers/Factiva API（境外第三方主要数据源）、Angular、asp.net、SQL Server、Citrix（为企业提供安全可靠的跳板机环境）。该平台具备以下特点：</p>
+                <p>从零开始设计、开发、部署和运维企业第三方尽职调查平台至今，将传统的合规尽职调查报告数字化、自动化，根据企业行业特点和风险偏好，定制开发风险积分卡，助力企业审查第三方并持续监控风险。采用的技术包括但不限于：天眼查API（国内第三方主要数据源）、D&B
+                    Hoovers/Factiva API（境外第三方主要数据源）、Angular、asp.net、SQL Server、Citrix（为企业提供安全可靠的跳板机环境）。该平台具备以下特点：</p>
                 <ol>
-                    <li>平台注重数据安全。所有的数据均存储在公司内部的，零信任的服务器内，仅项目相关人员才能通过多重身份认证才能访问，确保客户数据的保密性，保障第三方尽调过程中涉及的企业机密信息不被泄漏和篡改；</li>
+                    <li>平台注重数据安全。所有的数据均存储在公司内部的，零信任的服务器内，仅项目相关人员才能通过多重身份认证才能访问，确保客户数据的保密性，保障第三方尽调过程中涉及的企业机密信息不被泄漏和篡改；
+                    </li>
                     <li>多租户模式，通过与企业深入沟通和了解实际业务需求，根据其特定行业、地域及风险偏好，为不同客户/第三方可定制不同的风险模型，全面评估第三方合作伙伴的合规性；</li>
                     <li>采用敏捷开发，尽量采用自动化工具，收集不同数据源（外部公开数据、企业内部数据、订阅数据等）以及运算；</li>
                     <li>搭建运营团队，建立高效的团队协作机制，确保每个尽调需求能够在约定的时间内交付。</li>
@@ -117,15 +127,19 @@
             <section>
                 <header>企业商业秘密外发仪表盘</header>
                 <div class="sub-title">2022.8 - 2023.2</div>
-                <p>协助企业搭建合规数据仓库，定制化设计关键风险指标，实现风险数据 T+1 展示（部分数据/风险实时展示）。采用的技术包括但不限于：Splunk、SQL Server、SSIS、Tableau、Kettle、dotnet Core、Power BI。</p>
-                <p>首先，使用Splunk进行日志和数据的收集和初步分析。通过配置Splunk索引，实时监控企业内部网络行为和系统活动，检测潜在的风险。利用Splunk强大的搜索和可视化功能，快速定位异常行为，生成相应的风险报告和风险警示；其次，基于SQL Server搭建数据仓库和风险模型，将Splunk中的数据通过ETL（Kettle）导入与企业商业秘密风险紧密相关的数据，供企业内审/合规员工进行数据分析；最后，基于Power BI搭建风险仪表盘，实现风险汇总数据可视化展示（按员工、部门、场景等不同维度）、关键风险指标及对应发现展示、以及历史趋势分析。</p>
+                <p>协助企业搭建合规数据仓库，定制化设计关键风险指标，实现风险数据 T+1 展示（部分数据/风险实时展示）。采用的技术包括但不限于：Splunk、SQL
+                    Server、SSIS、Tableau、Kettle、dotnet Core、Power BI。</p>
+                <p>首先，使用Splunk进行日志和数据的收集和初步分析。通过配置Splunk索引，实时监控企业内部网络行为和系统活动，检测潜在的风险。利用Splunk强大的搜索和可视化功能，快速定位异常行为，生成相应的风险报告和风险警示；其次，基于SQL
+                    Server搭建数据仓库和风险模型，将Splunk中的数据通过ETL（Kettle）导入与企业商业秘密风险紧密相关的数据，供企业内审/合规员工进行数据分析；最后，基于Power
+                    BI搭建风险仪表盘，实现风险汇总数据可视化展示（按员工、部门、场景等不同维度）、关键风险指标及对应发现展示、以及历史趋势分析。</p>
                 <p>在整个项目执行中，需要与企业多个部门同事协作，根据他们的需求和反馈不断调整和优化仪表盘的设计和功能。</p>
             </section>
             <section>
                 <header>负面舆情监测平台</header>
                 <div class="sub-title">2021.12 至今</div>
                 <p>
-                    基于<a href="https://www.elastic.co/cn/elastic-stack/" mat-button>ELK 技术栈</a>，搭建统一的负面舆情监控平台，持续关注公司的审计客户及其第三方，极大缩减企业人力成本。采用的技术包括但不限于：Elasticsearch、Kibana、Python、Node、Playwright、Redis、Pandas。该平台具备以下能力：
+                    基于<a href="https://www.elastic.co/cn/elastic-stack/" mat-button>ELK
+                        技术栈</a>，搭建统一的负面舆情监控平台，持续关注公司的审计客户及其第三方，极大缩减企业人力成本。采用的技术包括但不限于：Elasticsearch、Kibana、Python、Node、Playwright、Redis、Pandas。该平台具备以下能力：
                 </p>
                 <ol>
                     <li>集成消息队列，支持多生产者和多消费者，突破传统爬虫单节点限制（被目标网站禁止访问）；</li>
@@ -133,14 +147,17 @@
                     <li>使用Kibana面板实时查看任务进度，关键词搜索等；</li>
                     <li>使用NLP（自然语言处理）等技术对舆情数据进行情感分析和关键词提取；</li>
                     <li>支持人工审核，进一步降低误命中率；</li>
-                    <li>为每个任务自动生成关键内容总结，支持原始数据导出（RESTful API/Excel提供下游团队继续分析用途）。</li>                    
+                    <li>为每个任务自动生成关键内容总结，支持原始数据导出（RESTful API/Excel提供下游团队继续分析用途）。</li>
                 </ol>
             </section>
             <section>
                 <header>Social Insight Service</header>
                 <div class="sub-title">2012.12 - 2018.4</div>
                 <p>
-                    一个持续迭代的微软社区（MSDN、ASP.NET、MS community、Azure、Stackoverflow、Office 365等）分析平台。最开始用 Silverlight 技术开发，后经改造成 HTML5 网站。可以监测论坛上的Top Influencers、Top Threads、Top Forums以及Top Tags等等。后期扩展到其他主流程序员常访问平台（GitHub、Meetup、Wordpress、CSDN、RSDN、Gitee等）。我的职责：重构平台，设计并编写主要页面，包括样式布局、js 代码以及 asp.net 后台访问数据库等。独立完成收藏夹、日志、缓存等功能，参与实现订阅等功能。完成单元测试，并审阅代码质量。编写js控件。
+                    一个持续迭代的微软社区（MSDN、ASP.NET、MS community、Azure、Stackoverflow、Office 365等）分析平台。最开始用 Silverlight
+                    技术开发，后经改造成 HTML5 网站。可以监测论坛上的Top Influencers、Top Threads、Top Forums以及Top
+                    Tags等等。后期扩展到其他主流程序员常访问平台（GitHub、Meetup、Wordpress、CSDN、RSDN、Gitee等）。我的职责：重构平台，设计并编写主要页面，包括样式布局、js
+                    代码以及 asp.net 后台访问数据库等。独立完成收藏夹、日志、缓存等功能，参与实现订阅等功能。完成单元测试，并审阅代码质量。编写js控件。
                 </p>
             </section>
         </section>
@@ -152,15 +169,14 @@
             <mat-list role="lsit">
                 <mat-list-item>
                     <span mat-list-icon>
-                        <img src="https://zxs66.github.io/images/contact/EY_Logo.png" alt="EY">
+                        <img [src]="img_base+'contact/EY_Logo.png'" alt="EY">
                     </span>
                     <h4 mat-line>安永会计师事务所</h4>
                     <p class="sub-title" mat-line>经理，2018.7 至今</p>
                 </mat-list-item>
                 <mat-list-item>
                     <span mat-list-icon>
-                        <img src="https://zxs66.github.io/images/contact/wicresoft-logo-blue-header.png"
-                            alt="Wicresoft">
+                        <img src="img_base+'contact/wicresoft-logo-blue-header.png'" alt="Wicresoft">
                     </span>
                     <h4 mat-line>上海微创软件</h4>
                     <p class="sub-title" mat-line>高级开发工程师，外派至微软，2012.2 至 2018.5 </p>

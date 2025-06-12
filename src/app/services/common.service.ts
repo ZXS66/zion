@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Utility } from '../utility';
-import { CONSTANTS } from '../constants';
+import { SYSTEM_NAME } from '../constants';
 import { Observable, Subject } from 'rxjs';
 
 /** service for changing document title */
@@ -20,8 +20,8 @@ export class DocumentTitleService {
         this.title = newTitle;
         const displayTitle = Utility.isNotEmptyString(newTitle) ?
             // change page title when the newTitle is not empty
-            newTitle + '|' + CONSTANTS.SYSTEM_NAME :
-            CONSTANTS.SYSTEM_NAME;
+            newTitle + '|' + SYSTEM_NAME :
+            SYSTEM_NAME;
         document.title = displayTitle;
         // bug fix: the title of parent window (current page was opened in an iframe) is not changed
         let parentWindow = window.frameElement;

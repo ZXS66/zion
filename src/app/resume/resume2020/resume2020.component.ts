@@ -4,12 +4,13 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faPhone, faCogs, faCode, faUserCog, faGraduationCap, faHeart, faBriefcase, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faWeibo, faWeixin, faQq, faCss3, faHtml5, faJs } from '@fortawesome/free-brands-svg-icons';
+import { ASSETS_BASE_URL } from 'src/app/constants';
 
 @Component({
-    selector: 'app-resume2020',
-    templateUrl: './resume2020.component.html',
-    styleUrls: ['./resume2020.component.css'],
-    standalone: false
+  selector: 'app-resume2020',
+  templateUrl: './resume2020.component.html',
+  styleUrls: ['./resume2020.component.css'],
+  standalone: false
 })
 export class Resume2020Component implements OnInit {
 
@@ -32,6 +33,9 @@ export class Resume2020Component implements OnInit {
     faCode
   };
 
+  /** base url of images */
+  img_base = ASSETS_BASE_URL + 'img/';
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -40,5 +44,4 @@ export class Resume2020Component implements OnInit {
   showWeChatQRCode(): void {
     // TODO
   }
-
 }

@@ -6,6 +6,7 @@ import { faWeibo, faWeixin, faQq, faCss3, faHtml5, faJs } from '@fortawesome/fre
 import { DialogMyWechatQrcode } from '../dialog-wechat-qrcode/dialog-wechat-qrcode';
 
 import { MatDialog } from '@angular/material/dialog';
+import { ASSETS_BASE_URL } from 'src/app/constants';
 
 @Component({
     selector: 'app-resume-2024-slim',
@@ -34,6 +35,9 @@ export class Resume2024SlimComponent implements OnInit {
     faCode
   };
 
+  /** base url of images */
+  img_base = ASSETS_BASE_URL + 'img/';
+  
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -42,5 +46,4 @@ export class Resume2024SlimComponent implements OnInit {
   showWeChatQRCode() {
     this.dialog.open(DialogMyWechatQrcode);
   }
-
 }

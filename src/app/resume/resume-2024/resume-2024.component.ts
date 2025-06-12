@@ -6,12 +6,13 @@ import { faWeibo, faWeixin, faQq, faCss3, faHtml5, faJs } from '@fortawesome/fre
 import { MatDialog } from '@angular/material/dialog';
 
 import { DialogMyWechatQrcode } from '../dialog-wechat-qrcode/dialog-wechat-qrcode';
+import { ASSETS_BASE_URL } from 'src/app/constants';
 
 @Component({
-    selector: 'app-resume-2024',
-    templateUrl: './resume-2024.component.html',
-    styleUrls: ['./resume-2024.component.css'],
-    standalone: false
+  selector: 'app-resume-2024',
+  templateUrl: './resume-2024.component.html',
+  styleUrls: ['./resume-2024.component.css'],
+  standalone: false
 })
 export class Resume2024Component implements OnInit {
 
@@ -33,6 +34,9 @@ export class Resume2024Component implements OnInit {
     faBriefcase,
     faCode
   };
+
+  /** base url of images */
+  img_base = ASSETS_BASE_URL + 'img/';
 
   constructor(public dialog: MatDialog) { }
 

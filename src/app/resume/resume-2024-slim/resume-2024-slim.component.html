@@ -1,7 +1,7 @@
 <article class="flex">
     <div class="col-3 mat-elevation-z2 basic">
         <div>
-            <img src="https://zxs66.github.io/images/contact/resume%20avator.jpg" alt="我的头像">
+            <img [src]="img_base+'contact/resume%20avator.jpg'" alt="我的头像">
             <h3>朱浔生</h3>
             <div>求职意向：全栈开发/系统架构</div>
         </div>
@@ -121,14 +121,18 @@
                 <header>负面舆情监测平台</header>
                 <div class="sub-title">2021.12 至今</div>
                 <p>
-                    基于<a href="https://www.elastic.co/cn/elastic-stack/" mat-button>ELK 技术栈</a>，搭建统一的负面舆情监控平台，持续关注公司的审计客户及其第三方，极大缩减企业人力成本。采用的技术包括但不限于：Elasticsearch、Kibana、Python、Node、Playwright、Redis、Pandas。
+                    基于<a href="https://www.elastic.co/cn/elastic-stack/" mat-button>ELK
+                        技术栈</a>，搭建统一的负面舆情监控平台，持续关注公司的审计客户及其第三方，极大缩减企业人力成本。采用的技术包括但不限于：Elasticsearch、Kibana、Python、Node、Playwright、Redis、Pandas。
                 </p>
             </section>
             <section>
                 <header>Social Insight Service</header>
                 <div class="sub-title">2012.12 - 2018.4</div>
                 <p>
-                    一个持续迭代的微软社区（MSDN、ASP.NET、MS community、Azure、Stackoverflow、Office 365等）分析平台。最开始用 Silverlight 技术开发，后经改造成 HTML5 网站。可以监测论坛上的Top Influencers、Top Threads、Top Forums以及Top Tags等等。后期扩展到其他主流程序员常访问平台（GitHub、Meetup、Wordpress、CSDN、RSDN、Gitee等）。我的职责：重构平台，设计并编写主要页面，包括样式布局、js 代码以及 asp.net 后台访问数据库等。独立完成收藏夹、日志、缓存等功能，参与实现订阅等功能。完成单元测试，并审阅代码质量。编写js控件。
+                    一个持续迭代的微软社区（MSDN、ASP.NET、MS community、Azure、Stackoverflow、Office 365等）分析平台。最开始用 Silverlight
+                    技术开发，后经改造成 HTML5 网站。可以监测论坛上的Top Influencers、Top Threads、Top Forums以及Top
+                    Tags等等。后期扩展到其他主流程序员常访问平台（GitHub、Meetup、Wordpress、CSDN、RSDN、Gitee等）。我的职责：重构平台，设计并编写主要页面，包括样式布局、js
+                    代码以及 asp.net 后台访问数据库等。独立完成收藏夹、日志、缓存等功能，参与实现订阅等功能。完成单元测试，并审阅代码质量。编写js控件。
                 </p>
             </section>
         </section>
@@ -140,15 +144,14 @@
             <mat-list role="lsit">
                 <mat-list-item>
                     <span mat-list-icon>
-                        <img src="https://zxs66.github.io/images/contact/EY_Logo.png" alt="EY">
+                        <img [src]="img_base+'contact/EY_Logo.png'" alt="EY">
                     </span>
                     <h4 mat-line>安永会计师事务所</h4>
                     <p class="sub-title" mat-line>经理，2018.7 至今</p>
                 </mat-list-item>
                 <mat-list-item>
                     <span mat-list-icon>
-                        <img src="https://zxs66.github.io/images/contact/wicresoft-logo-blue-header.png"
-                            alt="Wicresoft">
+                        <img [src]="img_base+'contact/wicresoft-logo-blue-header.png'" alt="Wicresoft">
                     </span>
                     <h4 mat-line>上海微创软件</h4>
                     <p class="sub-title" mat-line>高级开发工程师，外派至微软，2012.2 至 2018.5 </p>

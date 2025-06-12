@@ -1,5 +1,6 @@
 /// <reference lib="webworker" />
 
+import { ASSETS_BASE_URL } from '../constants';
 import { WorkerMessage, WorkerAction, WorkerStatusCode } from '../worker-common.model';
 import { EmojiMetadata } from 'src/app/common.model';
 
@@ -42,8 +43,7 @@ const loadEmojiMetadata = async () => {
     // loaded
     return;
   }
-  // const fileLink = 'https://zxs66.github.io/images/emoji-knowledge-review/full-emoji-list.json';
-  const fileLink = `https://johnzhu.online/blog/images/emoji-knowledge-review/full-emoji-list.json`;
+  const fileLink = ASSETS_BASE_URL + `img/emoji-knowledge-review/full-emoji-list.json`;
   const handleError = (err) => {
     console.error(err);
     EMOJIMETADATA_CACHE = new Set();
