@@ -1,19 +1,19 @@
 article {
   width: 90vw;
-  min-width: 800px;
   margin: 0 auto;
 }
 
 article section {
-  min-height: 80vh;
+  min-height: 90vh;
+  margin-top: 2em;
 }
 
 article footer a {
   text-decoration: none;
 }
 
-@media print{
-    article footer{
-      display: none;
-    }
+@media print {
+  article footer {
+    display: none;
+  }
 }

@@ -1,4 +1,4 @@
-<h5>Sitemap</h5>
+<h3>Sitemap</h3>
 
 <mat-list>
     <ng-container *ngFor="let item of sitemap">
@@ -6,29 +6,29 @@
             <!-- group of links -->
             <div mat-subheader>
                 {{item.name}}
-                <span mat-line *ngIf="item.introduction?.length" class="italic">
-                    ({{item.introduction}})
+                <span *ngIf="item.introduction?.length" class="italic">
+                    - {{item.introduction}}
                 </span>
             </div>
             <mat-list-item *ngFor="let child of item.children">
                 <!-- links of the group -->
-                <a mat-button [routerLink]="child.link" mat-list-icon>
-                    <fa-icon *ngIf="child.icon" [icon]="child.icon"></fa-icon>
-                    <fa-icon *ngIf="!(child.icon)" [icon]="noIcon"></fa-icon>
+                <a matListItemIcon mat-fab [routerLink]="child.link">
+                  <fa-icon *ngIf="child.icon" [icon]="child.icon"></fa-icon>
+                  <fa-icon *ngIf="!(child.icon)" [icon]="noIcon"></fa-icon>
                 </a>
-                <strong mat-line>{{child.title||child.link}}</strong>
-                <div mat-line>{{child.introduction}}</div>
+                <div matListItemTitle>{{child.title||child.link}}</div>
+                <div matListItemLine>{{child.introduction}}</div>
             </mat-list-item>
             <mat-divider></mat-divider>
         </ng-container>
         <mat-list-item *ngIf="!(item.children?.length)">
             <!-- just a link -->
-            <a mat-button [routerLink]="item.link" mat-list-icon>
-                <fa-icon *ngIf="item.icon" [icon]="item.icon"></fa-icon>
-                <fa-icon *ngIf="!(item.icon)" [icon]="noIcon"></fa-icon>
+            <a matListItemIcon mat-fab [routerLink]="item.link">
+              <fa-icon *ngIf="item.icon" [icon]="item.icon"></fa-icon>
+              <fa-icon *ngIf="!(item.icon)" [icon]="noIcon"></fa-icon>
             </a>
-            <strong mat-line>{{item.title||item.link}}</strong>
-            <div mat-line>{{item.introduction}}</div>
+            <div matListItemTitle>{{item.title||item.link}}</div>
+            <div matListItemLine>{{item.introduction}}</div>
         </mat-list-item>
     </ng-container>
 </mat-list>

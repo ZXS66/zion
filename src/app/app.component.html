@@ -7,15 +7,13 @@
   <footer>
     <mat-grid-list cols="12" rowHeight="2em">
       <mat-grid-tile colspan="10">
-        <a href="/" title="&copy;时代残党">
-          &copy; 2024 时代残党 
-        </a>&nbsp;
+        &copy; {{nowYear}} {{appName}} |&nbsp;
         <a href="https://beian.miit.gov.cn/" target="_blank">
           沪ICP备2024050501号-1
         </a>
       </mat-grid-tile>
       <mat-grid-tile colspan="2">
-        <a href="#/sitemap" title="Sitemap">
+        <a mat-icon-button href="#/sitemap" title="Sitemap">
           <fa-icon [icon]="icons.map"></fa-icon>
         </a>
       </mat-grid-tile>
