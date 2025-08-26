@@ -1,19 +1,27 @@
-import { registerLocaleData, CommonModule, DecimalPipe, DatePipe } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  registerLocaleData,
+  CommonModule,
+  DecimalPipe,
+  DatePipe,
+} from "@angular/common";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { DocumentTitleService, BroadcastService } from './services/common.service';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import {
+  DocumentTitleService,
+  BroadcastService,
+} from "./services/common.service";
 
-import { SubMaterialModule } from './sub-material/sub-material.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { UnknownComponent } from './unknown/unknown.component';
-import { SitemapComponent } from './sitemap/sitemap.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { SubMaterialModule } from "./sub-material/sub-material.module";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { ForbiddenComponent } from "./forbidden/forbidden.component";
+import { UnknownComponent } from "./unknown/unknown.component";
+import { SitemapComponent } from "./sitemap/sitemap.component";
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 
 @NgModule({
   declarations: [
@@ -21,7 +29,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     PageNotFoundComponent,
     ForbiddenComponent,
     UnknownComponent,
-    SitemapComponent
+    SitemapComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +43,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     DecimalPipe,
     DocumentTitleService,
     BroadcastService,
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

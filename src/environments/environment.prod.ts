@@ -1,4 +1,7 @@
+import zion from "../../package.json";
+
 export const environment = {
   production: true,
-  locale: 'zh'
+  locale: "zh",
+  version: zion.version,
 };

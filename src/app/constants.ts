@@ -1,5 +1,7 @@
 import { environment } from "../environments/environment";
 
+/** site constants, READ ONLY */
+
 /** current locale */
 export const APP_LOCALE = {
   /** English */
@@ -13,11 +15,13 @@ export const APP_LOCALE = {
   /// TODO: support more locales
 };
 Object.freeze(APP_LOCALE);
+/** application name */
+export const APP_NAME = "ZXS66";
+/** application version */
+export const APP_VERSION = environment.version;
 
 /** user email for sending feedback */
 export const FEEDBACK_EMAIL = "zh_cn2008@hotmail.com";
-
-/** site constants, READ ONLY */
 
 /** friendly messages */
 export const MESSAGE = APP_LOCALE.zh
@@ -60,8 +64,6 @@ export const MINWIDTH_DIALOG = "64vw";
 export const MINWIDTH_DIALOG_LARGE = "90vw";
 /** min width for a small size dialog  */
 export const MINWIDTH_DIALOG_SMALL = "32vw";
-/** system name */
-export const SYSTEM_NAME = APP_LOCALE.zh ? "曾牛小友" : "ZXS66";
 /** delimiter of concate string for array elements */
 export const ELEMENT_DELIMITER = "[/]";
 

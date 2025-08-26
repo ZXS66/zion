@@ -1,10 +1,10 @@
 import { isNotEmptyArray, isNotEmptyString } from "./utility";
 import { MD5 } from "object-hash";
-import { SYSTEM_NAME } from "./constants";
+import { APP_NAME } from "./constants";
 import { setItem, getItem, clear } from "localforage";
 
 /** key prefix for cache, distinguish from other apps */
-const CACHE_KEY_PREFIX = SYSTEM_NAME + ":";
+const CACHE_KEY_PREFIX = APP_NAME + ":";
 
 /** generate storage key */
 const genStorageKey = (...params: string[]) => {

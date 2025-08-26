@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { faMap } from "@fortawesome/free-regular-svg-icons";
-import { SYSTEM_NAME } from "./constants";
+import { APP_NAME, APP_VERSION } from "./constants";
 
 @Component({
   selector: "app-root",
@@ -8,10 +8,12 @@ import { SYSTEM_NAME } from "./constants";
   styleUrls: ["./app.component.css"],
   standalone: false,
 })
-export class AppComponent {
-  icons = {
-    map: faMap,
-  };
-  nowYear = new Date().getFullYear();
-  appName = SYSTEM_NAME;
+export class AppComponent implements OnInit {
+  icons = { map: faMap };
+  appName = APP_NAME;
+  appVer = APP_VERSION;
+
+  ngOnInit(): void {
+    console.log(`application version: ${this.appVer}`);
+  }
 }
