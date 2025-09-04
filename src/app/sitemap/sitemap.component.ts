@@ -2,10 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faGrin, faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
+  faCircle,
   faMap,
+  faSnowflake,
   faStopCircle,
   faUser,
-  faCircle,
 } from "@fortawesome/free-regular-svg-icons";
 
 @Component({
@@ -22,6 +23,12 @@ export class SitemapComponent implements OnInit {
         "Emoji Viewer",
         "list all emojis in one page (updated to Unicode v14.0)",
         faGrin,
+      ),
+      new SitemapItem(
+        "/lab/weather",
+        "Weather Forecast",
+        "view live weather and forecast by city",
+        faSnowflake,
       ),
       new SitemapItem(
         "/lab/unsubscribe",

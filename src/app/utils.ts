@@ -80,3 +80,20 @@ export const parseBoolean = (value: string): boolean => {
   }
   return false;
 };
+
+export const sleep = async (ms: number): Promise<void> => {
+  await new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+const __weekMap = {
+  1: "一",
+  2: "二",
+  3: "三",
+  4: "四",
+  5: "五",
+  6: "六",
+  7: "日",
+};
+export const parseWeek = (week: string): string => {
+  return __weekMap[Number.parseInt(week)] || "";
+};

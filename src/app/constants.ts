@@ -19,6 +19,7 @@ Object.freeze(APP_LOCALE);
 export const APP_NAME = "ZXS66";
 /** application version */
 export const APP_VERSION = environment.version;
+export const APP_HOST = environment.host;
 
 /** user email for sending feedback */
 export const FEEDBACK_EMAIL = "zh_cn2008@hotmail.com";
@@ -40,8 +41,10 @@ export const MESSAGE = APP_LOCALE.zh
       ERROR: `error occurred, please contact ${FEEDBACK_EMAIL}, thanks!`,
     };
 Object.freeze(MESSAGE);
+
 /** site host */
-export const ASSETS_BASE_URL = "https://johnzhu.online/blog/";
+// export const ASSETS_BASE_URL = "https://johnzhu.online/blog/";
+export const ASSETS_BASE_URL = `${APP_HOST}/blog/`;
 /** how long an information message disappeared */
 export const MESSAGE_DURATION_INFO = 4096;
 /** how long an error message disappeared */
@@ -67,7 +70,4 @@ export const MINWIDTH_DIALOG_SMALL = "32vw";
 /** delimiter of concate string for array elements */
 export const ELEMENT_DELIMITER = "[/]";
 
-if (environment.production) {
-  // environment variables for production website
-  const pathname = window.location.pathname;
-}
+export const API_TOKEN = environment.apiToken;

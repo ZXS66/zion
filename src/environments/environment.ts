@@ -6,8 +6,10 @@ import zion from "../../package.json";
 
 export const environment = {
   production: false,
-  locale: "en",
   version: zion.version,
+  locale: "en",
+  host: "https://localhost:4200",
+  apiToken: "I'm blind, not dead.",
 };
 
 /*

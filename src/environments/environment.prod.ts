@@ -2,6 +2,8 @@ import zion from "../../package.json";
 
 export const environment = {
   production: true,
-  locale: "zh",
   version: zion.version,
+  locale: "zh",
+  host: "https://johnzhu.online",
+  apiToken: "I'm blind, not dead.",
 };

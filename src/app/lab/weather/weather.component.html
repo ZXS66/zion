@@ -1,0 +1,112 @@
+<form (change)="updateFormData($event)">
+  <mat-form-field>
+    <mat-label>城市</mat-label>
+    <input matInput required type="search" placeholder="xx市/xx区/xx县" name="city" [(ngModel)]="formData.city">
+  </mat-form-field>
+</form>
+<!-- <p>天气服务API状态：{{serviceReady?'🟢':'🔴'}}</p> -->
+<mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="onTabChange($event)">
+  <mat-tab label="实况天气">
+    <ng-container *ngIf="resultData&&resultData.lives&&resultData.lives.length">
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          {{resultData.lives[0].reporttime | date:'shortTime'}}实况
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <strong>🌡️ {{resultData.lives[0].temperature}}℃</strong>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <img [src]="icons.wind" alt="风力"/>{{resultData.lives[0].winddirection}}风{{resultData.lives[0].windpower}}级
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <img [src]="icons.humidity" alt="湿度"/>相对湿度{{resultData.lives[0].humidity|number:'1.0-0'}}%
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+  </mat-tab>
+  <mat-tab label="未来三天预报天气">
+    <ng-container *ngIf="resultData&&resultData.forecasts&&resultData.forecasts.length">
+        <header role="listitem">
+          {{resultData.forecasts[0].reporttime | date:'shortTime'}}实况
+        </header>
+        <mat-divider></mat-divider>
+          <header>
+            明天，
+            {{resultData.forecasts[0].casts[0].date|date}}，
+            周{{parseWeek(resultData.forecasts[0].casts[0].week)}}
+          </header>
+          <p>
+          <!-- 白天天气现象 -->
+          {{resultData.forecasts[0].casts[0].dayweather}}
+          <!-- 晚上天气现象 -->
+          <ng-container *ngIf="resultData.forecasts[0].casts[0].nightweather!==resultData.forecasts[0].casts[0].dayweather">
+            转{{resultData.forecasts[0].casts[0].nightweather}}
+          </ng-container>
+          </p>
+          <p>
+            <strong>🌡️ {{resultData.forecasts[0].casts[0].nighttemp}}-{{resultData.forecasts[0].casts[0].daytemp}}℃</strong>
+          </p>
+          <p>
+            <img [src]="icons.wind" alt="风力"/>
+            <!-- 白天风向 -->
+            {{resultData.forecasts[0].casts[0].daywind}}风{{resultData.forecasts[0].casts[0].daypower}}级
+            <!-- 晚上风向 -->
+            <ng-container *ngIf="resultData.forecasts[0].casts[0].nightwind!==resultData.forecasts[0].casts[0].daywind">
+              转{{resultData.forecasts[0].casts[0].nightwind}}风{{resultData.forecasts[0].casts[0].nightpower}}级
+            </ng-container>
+          </p>
+          <mat-divider></mat-divider>
+          <header>
+            后天，
+            {{resultData.forecasts[0].casts[1].date|date}}，
+            周{{parseWeek(resultData.forecasts[0].casts[1].week)}}
+          </header>
+          <p>
+          <!-- 白天天气现象 -->
+          {{resultData.forecasts[0].casts[1].dayweather}}
+          <!-- 晚上天气现象 -->
+          <ng-container *ngIf="resultData.forecasts[0].casts[1].nightweather!==resultData.forecasts[0].casts[1].dayweather">
+            转{{resultData.forecasts[0].casts[1].nightweather}}
+          </ng-container>
+          </p>
+          <p>
+            <strong>🌡️ {{resultData.forecasts[0].casts[1].nighttemp}}-{{resultData.forecasts[0].casts[1].daytemp}}℃</strong>
+          </p>
+          <p>
+            <img [src]="icons.wind" alt="风力"/>
+            <!-- 白天风向 -->
+            {{resultData.forecasts[0].casts[1].daywind}}风{{resultData.forecasts[0].casts[1].daypower}}级
+            <!-- 晚上风向 -->
+            <ng-container *ngIf="resultData.forecasts[0].casts[1].nightwind!==resultData.forecasts[0].casts[1].daywind">
+              转{{resultData.forecasts[0].casts[1].nightwind}}风{{resultData.forecasts[0].casts[1].nightpower}}级
+            </ng-container>
+          </p>
+          <mat-divider></mat-divider>
+          <header>
+            大后天，
+            {{resultData.forecasts[0].casts[2].date|date}}，
+            周{{parseWeek(resultData.forecasts[0].casts[2].week)}}
+          </header>
+          <p>
+          <!-- 白天天气现象 -->
+          {{resultData.forecasts[0].casts[2].dayweather}}
+          <!-- 晚上天气现象 -->
+          <ng-container *ngIf="resultData.forecasts[0].casts[2].nightweather!==resultData.forecasts[0].casts[2].dayweather">
+            转{{resultData.forecasts[0].casts[2].nightweather}}
+          </ng-container>
+          </p>
+          <p>
+            <strong>🌡️ {{resultData.forecasts[0].casts[2].nighttemp}}-{{resultData.forecasts[0].casts[2].daytemp}}℃</strong>
+          </p>
+          <p>
+            <img [src]="icons.wind" alt="风力"/>
+            <!-- 白天风向 -->
+            {{resultData.forecasts[0].casts[2].daywind}}风{{resultData.forecasts[0].casts[2].daypower}}级
+            <!-- 晚上风向 -->
+            <ng-container *ngIf="resultData.forecasts[0].casts[2].nightwind!==resultData.forecasts[0].casts[2].daywind">
+              转{{resultData.forecasts[0].casts[2].nightwind}}风{{resultData.forecasts[0].casts[2].nightpower}}级
+            </ng-container>
+          </p>
+    </ng-container>
+  </mat-tab>
+</mat-tab-group>
