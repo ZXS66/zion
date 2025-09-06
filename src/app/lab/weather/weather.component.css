@@ -3,10 +3,12 @@ mat-tab-group {
 }
 
 .weather-icon {
-  width: 35px;
-  height: 35px;
   background-image: url("https://i.tq121.com.cn/i/weather2017/weather_icon_w.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: inline-block;
+  height: 35px;
+  width: 35px;
 }
 .weather-icon.晴 {
   background-position: -640px -240px;

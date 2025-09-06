@@ -1,6 +1,6 @@
 {
   "name": "zion",
-  "version": "2025.08.22",
+  "version": "2025.09.06",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
