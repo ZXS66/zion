@@ -10,12 +10,10 @@
                     - {{item.introduction}}
                 </span>
             </div>
-            <mat-list-item *ngFor="let child of item.children">
+            <mat-list-item *ngFor="let child of item.children" mat-button [routerLink]="child.link">
                 <!-- links of the group -->
-                <a matListItemIcon mat-fab [routerLink]="child.link">
-                  <fa-icon *ngIf="child.icon" [icon]="child.icon"></fa-icon>
-                  <fa-icon *ngIf="!(child.icon)" [icon]="noIcon"></fa-icon>
-                </a>
+                <fa-icon *ngIf="child.icon" matListItemIcon [icon]="child.icon"></fa-icon>
+                <fa-icon *ngIf="!(child.icon)" matListItemIcon [icon]="noIcon"></fa-icon>
                 <div matListItemTitle>{{child.title||child.link}}</div>
                 <div matListItemLine>{{child.introduction}}</div>
             </mat-list-item>

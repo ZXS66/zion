@@ -1,3 +1,40 @@
 mat-tab-group {
   text-align: center;
 }
+
+.weather-icon {
+  width: 35px;
+  height: 35px;
+  background-image: url("https://i.tq121.com.cn/i/weather2017/weather_icon_w.png");
+  display: inline-block;
+}
+.weather-icon.晴 {
+  background-position: -640px -240px;
+}
+.weather-icon.多云 {
+  background-position: -78px 0;
+}
+.weather-icon.阴 {
+  background-position: -160px 0;
+}
+.weather-icon.小雨 {
+  background-position: -560px 0;
+}
+.weather-icon.中雨 {
+  background-position: -640px 0;
+}
+.weather-icon.雷阵雨 {
+  background-position: -640px -240px;
+}
+.weather-icon.小雪 {
+  background-position: -640px -240px;
+}
+.weather-icon.雾 {
+  background-position: -640px -240px;
+}
+.weather-icon.雾霾 {
+  background-position: -640px -240px;
+}
+.weather-icon.沙尘暴 {
+  background-position: -640px -240px;
+}

@@ -185,4 +185,23 @@ export class WeatherComponent implements OnInit {
   }
 
   parseWeek = parseWeek;
+
+  getBg(weather: string) {
+    // copy from weather.com.cn
+    const bgUrlPlaceholder =
+      "url('https://i.tq121.com.cn/i/weather2017/weatherBgxx.jpg')";
+    const bgMap = {
+      晴: "01",
+      多云: "02",
+      阴: "03",
+      小雨: "04",
+      雷阵雨: "05",
+      小雪: "06",
+      雾: "07",
+      雾霾: "08",
+      沙尘暴: "09",
+    };
+    const bgIdx = weather in bgMap ? bgMap[weather] : "10";
+    return bgUrlPlaceholder.replace("xx", bgIdx);
+  }
 }
