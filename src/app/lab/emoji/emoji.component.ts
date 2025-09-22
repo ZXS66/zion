@@ -1,42 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { WorkerMessage, WorkerAction } from 'src/app/worker-common.model';
-import { EmojiMetadata } from 'src/app/common.model';
+import { Component, OnInit } from "@angular/core";
+
+import { ASSETS_BASE_URL, INPUT_DEBOUNCE_TIME } from "src/app/constants";
+import { WorkerMessage, WorkerAction } from "src/app/worker-common.model";
+import { EmojiMetadata } from "src/app/lab/emoji/emoji.model";
 
 @Component({
-    selector: 'app-emoji',
-    templateUrl: './emoji.component.html',
-    styleUrls: ['./emoji.component.css'],
-    standalone: false
+  selector: "app-emoji",
+  templateUrl: "./emoji.component.html",
+  styleUrls: ["./emoji.component.css"],
+  standalone: false,
 })
 export class EmojiComponent implements OnInit {
-
   /** the web worker */
   private webWorker: Worker;
   private timer = 0;
 
   data: EmojiMetadata[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     // register web worker
-    if (typeof Worker !== 'undefined') {
-      this.webWorker = new Worker(new URL('../emoji-ww.worker', import.meta.url), { type: 'module' });
-      this.webWorker.addEventListener('message', ({ data }) => {
+    if (typeof Worker !== "undefined") {
+      this.webWorker = new Worker(
+        new URL("./emoji-ww.worker", import.meta.url),
+        { type: "module" },
+      );
+      this.webWorker.addEventListener("message", ({ data }) => {
         const theMessage = data as WorkerMessage;
         const theAction = theMessage.action;
         if (theAction === WorkerAction.Init) {
-          this.doSearch('');
+          this.doSearch("");
         } else if (theAction === WorkerAction.Execute) {
           this.data = theMessage.data;
         }
       });
-      // init
-      this.webWorker.postMessage(new WorkerMessage(null, WorkerAction.Init));
+      // init with delay
+      setTimeout(() => {
+        const fileLink =
+          ASSETS_BASE_URL + `img/emoji-knowledge-review/full-emoji-list.json`;
+        this.webWorker.postMessage(
+          new WorkerMessage(fileLink, WorkerAction.Init),
+        );
+      }, INPUT_DEBOUNCE_TIME);
     } else {
       // Web workers are not supported in this environment.
       // TODO: You should add a fallback so that your program still executes correctly.
-      console.log('The browser doesn\'t support Web Worker.');
+      console.log("The browser doesn't support Web Worker.");
     }
   }
   /** perform search action */

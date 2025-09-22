@@ -1,24 +1,29 @@
 /// <reference lib="webworker" />
 
-import { ASSETS_BASE_URL } from '../constants';
-import { WorkerMessage, WorkerAction, WorkerStatusCode } from '../worker-common.model';
-import { EmojiMetadata } from 'src/app/common.model';
+// fileReplacements not working in web worker as it is separatedly compiled via typescript
+// import { ASSETS_BASE_URL } from '../../constants';
+import {
+  WorkerMessage,
+  WorkerAction,
+  WorkerStatusCode,
+} from "src/app/worker-common.model";
+import { EmojiMetadata } from "src/app/lab/emoji/emoji.model";
 
-addEventListener('message', async ({ data }) => {
+addEventListener("message", async ({ data }) => {
   const req = data as WorkerMessage;
   if (req && req.action && req.action.length) {
     const action = req.action;
     const formData = req.data;
     const resp = new WorkerMessage(null, action);
     switch (action) {
-      case 'INIT':
-        await loadEmojiMetadata();
+      case "INIT":
+        await loadEmojiMetadata(formData);
         break;
-      case 'EXECUTE':
+      case "EXECUTE":
         const ls = await searchEmoji(formData);
         resp.data = ls;
         break;
-      case 'TERMINATE':
+      case "TERMINATE":
         break;
       default:
         const errorMsg = `unknown action when invoking web worker`;
@@ -38,13 +43,12 @@ addEventListener('message', async ({ data }) => {
 let EMOJIMETADATA_CACHE: Set<EmojiMetadata> = null;
 
 /** load emoji metadata */
-const loadEmojiMetadata = async () => {
+const loadEmojiMetadata = async (fileLink: string) => {
   if (EMOJIMETADATA_CACHE && EMOJIMETADATA_CACHE.size) {
     // loaded
     return;
   }
-  const fileLink = ASSETS_BASE_URL + `img/emoji-knowledge-review/full-emoji-list.json`;
-  const handleError = (err) => {
+  const handleError = (err: any) => {
     console.error(err);
     EMOJIMETADATA_CACHE = new Set();
   };
@@ -60,8 +64,10 @@ const loadEmojiMetadata = async () => {
 const MAXIMUM_ITEMS = 100;
 const searchEmoji = async (searchTerm: string): Promise<EmojiMetadata[]> => {
   if (!(EMOJIMETADATA_CACHE && EMOJIMETADATA_CACHE.size)) {
-    // dual guard
-    await loadEmojiMetadata();
+    // // dual guard
+    // await loadEmojiMetadata();
+    // metadata is not loaded yet, please wait...
+    return [];
   }
   if (!(searchTerm && searchTerm.length)) {
     // empty search term
@@ -70,9 +76,10 @@ const searchEmoji = async (searchTerm: string): Promise<EmojiMetadata[]> => {
   const term = searchTerm.trim().toLowerCase();
   const ls: EmojiMetadata[] = [];
   for (const emoji of EMOJIMETADATA_CACHE) {
-    if (emoji.group.toLowerCase().includes(term)
-      || emoji.sub_group.toLowerCase().includes(term)
-      || emoji.description.toLowerCase().includes(term)
+    if (
+      emoji.group.toLowerCase().includes(term) ||
+      emoji.sub_group.toLowerCase().includes(term) ||
+      emoji.description.toLowerCase().includes(term)
     ) {
       ls.push(emoji);
     }
