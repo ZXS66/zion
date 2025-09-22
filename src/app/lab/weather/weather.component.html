@@ -17,7 +17,7 @@
 </mat-tab-group>
 
 <ng-template #lives let-data="data">
-  <mat-list role="list" [style.background-image]="getBg(data.weather)">
+  <mat-list role="list" [style.background-image]="getBg(data.weather)" style="background-repeat: no-repeat;background-size: cover;">
     <mat-list-item role="listitem">
       <div>
         <i class="weather-icon" [ngClass]="data.weather" [title]="data.weather"></i>

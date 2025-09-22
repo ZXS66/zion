@@ -4,8 +4,6 @@ mat-tab-group {
 
 .weather-icon {
   background-image: url("https://i.tq121.com.cn/i/weather2017/weather_icon_w.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   display: inline-block;
   height: 35px;
   width: 35px;
