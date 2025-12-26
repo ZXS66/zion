@@ -1,11 +1,11 @@
 {
   "name": "zion",
-  "version": "2025.09.06",
+  "version": "2025.11.09",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && ng run zion:build:production",
-    "publish": "rsync -a ./dist/browser/* johnzhu@johnzhu.online:~/apps/ng",
+    "publish": "rsync -a ./dist/browser/* johnzhu@johnzhu.cn:~/apps/ng",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

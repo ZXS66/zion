@@ -130,7 +130,7 @@ export class WeatherComponent implements OnInit {
 
   connectWeatherAPI() {
     // const url = `ws://localhost:8000/api/weather/forecast_ws/${encodeURIComponent(this.formData.city)}-${encodeURIComponent(this.formData.extensions)}?x_token=${encodeURIComponent(API_TOKEN)}  `;
-    const url = `wss://johnzhu.online/api/weather/forecast_ws/${encodeURIComponent(this.formData.city)}-${encodeURIComponent(this.formData.extensions)}?x_token=${encodeURIComponent(API_TOKEN)}  `;
+    const url = `wss://johnzhu.cn/api/weather/forecast_ws/${encodeURIComponent(this.formData.city)}-${encodeURIComponent(this.formData.extensions)}?x_token=${encodeURIComponent(API_TOKEN)}  `;
     this.weatherService.connect(
       url,
       this.connectionEstablished.bind(this),

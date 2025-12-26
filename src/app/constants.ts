@@ -43,7 +43,7 @@ export const MESSAGE = APP_LOCALE.zh
 Object.freeze(MESSAGE);
 
 /** site host */
-// export const ASSETS_BASE_URL = "https://johnzhu.online/blog/";
+// export const ASSETS_BASE_URL = "https://johnzhu.cn/blog/";
 export const ASSETS_BASE_URL = `${APP_HOST}/blog/`;
 /** how long an information message disappeared */
 export const MESSAGE_DURATION_INFO = 4096;

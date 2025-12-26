@@ -44,7 +44,7 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "baseHref": "https://johnzhu.online/ng/",
+              "baseHref": "https://johnzhu.cn/ng/",
               "budgets": [
                 {
                   "type": "initial",
