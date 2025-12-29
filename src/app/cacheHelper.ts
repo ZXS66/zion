@@ -1,7 +1,8 @@
-import { isNotEmptyArray, isNotEmptyString } from "./utility";
 import { MD5 } from "object-hash";
-import { APP_NAME } from "./constants";
 import { setItem, getItem, clear } from "localforage";
+
+import { isNotEmptyArray, isNotEmptyString } from "src/app/utils";
+import { APP_NAME } from "src/app/constants";
 
 /** key prefix for cache, distinguish from other apps */
 const CACHE_KEY_PREFIX = APP_NAME + ":";

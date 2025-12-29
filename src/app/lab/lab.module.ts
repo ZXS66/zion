@@ -7,11 +7,11 @@ import {
   withInterceptorsFromDi,
 } from "@angular/common/http";
 
-import { SubMaterialModule } from "../sub-material/sub-material.module";
-import { UnsubscribeComponent } from "./unsubscribe/unsubscribe.component";
-import { EmojiComponent } from "./emoji/emoji.component";
-import { WeatherComponent } from "./weather/weather.component";
-import { SocketService } from "../services/common.service";
+import { SubMaterialModule } from "src/app/sub-material/sub-material.module";
+import { UnsubscribeComponent } from "src/app/lab/unsubscribe/unsubscribe.component";
+import { EmojiComponent } from "src/app/lab/emoji/emoji.component";
+import { WeatherComponent } from "src/app/lab/weather/weather.component";
+import { SocketService } from "src/app/services/common.service";
 
 const labRoutes: Routes = [
   { path: "emoji", component: EmojiComponent },

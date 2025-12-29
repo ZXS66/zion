@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import cache from "localforage";
 
-import { SocketService } from "../../services/common.service";
-import { API_TOKEN } from "src/app/constants";
+import { SocketService } from "src/app/services/common.service";
+import { API_TOKEN, APP_NAME } from "src/app/constants";
 import { parseWeek, sleep } from "src/app/utils";
 
 const img_base = "assets/";

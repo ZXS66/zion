@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 
-import { isNotEmptyString } from "../utils";
-import { API_TOKEN, APP_NAME } from "../constants";
+import { isNotEmptyString } from "src/app/utils";
+import { API_TOKEN, APP_NAME } from "src/app/constants";
 
 /** service for changing document title */
 @Injectable()

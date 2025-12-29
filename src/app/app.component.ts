@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { faMap } from "@fortawesome/free-regular-svg-icons";
-import { APP_NAME, APP_VERSION } from "./constants";
+import { APP_NAME, APP_VERSION } from "src/app/constants";
 
 @Component({
   selector: "app-root",

@@ -5,7 +5,7 @@ article {
 
 article section {
   min-height: 90vh;
-  margin-top: 2em;
+  margin: 2em auto;
 }
 
 article footer a {
