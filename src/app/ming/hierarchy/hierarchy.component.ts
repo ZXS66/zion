@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 
 import { ASSETS_BASE_URL } from "src/app/constants";
 import { environment } from "src/environments/environment";
-import { RoyalFamilyMember } from "src/app/ming/ming.models";
+import { FamilyMember } from "src/app/ming/ming.models";
 import { isNotEmptyArray } from "src/app/utils";
 
 @Component({
@@ -16,7 +16,7 @@ export class HierarchyComponent {
 
   loadingStatus: number = 0; // 0: loading, 1: loaded, 2: error
 
-  data: RoyalFamilyMember[] = [];
+  data: FamilyMember[] = [];
 
   ngOnInit(): void {
     const fileLink = environment.production
@@ -35,11 +35,11 @@ export class HierarchyComponent {
       });
   }
 
-  private _normalizeData(data: RoyalFamilyMember[]): RoyalFamilyMember[] {
+  private _normalizeData(data: FamilyMember[]): FamilyMember[] {
     if (!isNotEmptyArray(data)) return [];
     const id_name = data.reduce(
       (acc, item) => {
-        acc[item.id] = item.姓名;
+        acc[item.id] = item.name;
         return acc;
       },
       {} as Record<string, string>,

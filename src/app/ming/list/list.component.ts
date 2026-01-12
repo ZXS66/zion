@@ -6,9 +6,9 @@ import {
   MatRowDef,
 } from "@angular/material/table";
 
-import { ASSETS_BASE_URL } from "src/app/constants";
-
-import { RoyalFamilyMember } from "src/app/ming/ming.models";
+import { API_BASE_URL, API_TOKEN, ASSETS_BASE_URL } from "src/app/constants";
+import { environment } from "src/environments/environment";
+import { FamilyMember } from "src/app/ming/ming.models";
 import { isNotEmptyArray } from "src/app/utils";
 
 @Component({
@@ -32,13 +32,16 @@ export class ListComponent implements OnInit {
     // "子嗣数量",
   ];
 
-  data: RoyalFamilyMember[] = [];
+  data: FamilyMember[] = [];
 
   ngOnInit(): void {
-    // const fileLink =
-    //   ASSETS_BASE_URL + `img/ming/ming_royal_family_complete.json`;
-    const fileLink = "assets/ming_royal_family_complete.json";
-    fetch(fileLink)
+    const params = new URLSearchParams();
+    params.set("q", "");
+    const fileLink = `${API_BASE_URL}family/members/?${params}`;
+    fetch(fileLink, {
+      method: "GET",
+      headers: { "x-token": API_TOKEN, "Content-Type": "application/json" },
+    })
       .then((response) => response.json())
       .then((data) => {
         this.data = this._normalizeData(data);
@@ -51,18 +54,20 @@ export class ListComponent implements OnInit {
       });
   }
 
-  private _normalizeData(data: RoyalFamilyMember[]): RoyalFamilyMember[] {
+  private _normalizeData(data: FamilyMember[]): FamilyMember[] {
     if (!isNotEmptyArray(data)) return [];
     const id_name = data.reduce(
       (acc, item) => {
-        acc[item.id] = item.姓名;
+        acc[item.id] = item.name;
         return acc;
       },
       {} as Record<string, string>,
     );
-    return data.map((item) => ({
-      ...item,
-      父亲: id_name[item.father_id] || "未知",
-    }));
+    return data.map((item) => {
+      return {
+        ...item,
+        父亲: id_name[item.father_id] || "未知",
+      };
+    });
   }
 }

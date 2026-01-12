@@ -42,9 +42,11 @@ export const MESSAGE = APP_LOCALE.zh
     };
 Object.freeze(MESSAGE);
 
-/** site host */
+/** assets url path */
 // export const ASSETS_BASE_URL = "https://johnzhu.cn/blog/";
 export const ASSETS_BASE_URL = `${APP_HOST}/blog/`;
+/** api url path */
+export const API_BASE_URL = `${APP_HOST}/api/`;
 /** how long an information message disappeared */
 export const MESSAGE_DURATION_INFO = 4096;
 /** how long an error message disappeared */

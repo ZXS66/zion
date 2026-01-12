@@ -9,8 +9,8 @@
       <ng-container matColumnDef="人物">
         <th mat-header-cell *matHeaderCellDef>人物</th>
         <td mat-cell *matCellDef="let row">
-          {{row['拼音']}}<br/>{{row['姓名']}}
-          <br/>生卒：{{row['生卒']}}
+          {{row.pin_yin}}<br/>{{row.name}}
+          <br/>生卒：{{row.birthday}}-{{row.deathday}}
         </td>
       </ng-container>
       <ng-container matColumnDef="年号庙号封号">
@@ -31,18 +31,12 @@
       </ng-container>
       <ng-container matColumnDef="主要政绩或备注">
         <th mat-header-cell *matHeaderCellDef>主要政绩或备注</th>
-        <td mat-cell *matCellDef="let row">
-          {{row['主要政绩'] || row['备注']}}
-        </td>
+        <td mat-cell *matCellDef="let row">{{row.summary}}</td>
       </ng-container>
       <ng-container matColumnDef="在位时间">
         <th mat-header-cell *matHeaderCellDef>在位时间</th>
-        <td mat-cell *matCellDef="let row">{{row['在位时间']}}</td>
+        <td mat-cell *matCellDef="let row">{{row.extra['在位时间']}}</td>
       </ng-container>
-      <!-- <ng-container matColumnDef="生卒">
-        <th mat-header-cell *matHeaderCellDef>生卒</th>
-        <td mat-cell *matCellDef="let row">{{row['生卒']}}</td>
-      </ng-container> -->
       <ng-container matColumnDef="父母">
         <th mat-header-cell *matHeaderCellDef>父母</th>
         <td mat-cell *matCellDef="let row">父：{{row['父亲']}}，母：{{row['母亲']}}</td>
