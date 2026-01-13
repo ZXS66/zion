@@ -18,6 +18,8 @@
 //   子嗣数量: number;
 // }
 
+import { isNotEmptyArray, isNotEmptyString } from "../utils";
+
 export interface FamilyMember {
   id: number;
   name: string;
@@ -31,4 +33,15 @@ export interface FamilyMember {
   summary: string;
   extra: string;
   protected_info: string;
+  /** flatted data that extracted from `extra` */
+  spread?: Record<string, any>;
 }
+
+/** normalize the FamilyMember data */
+export const normFamilyMember = (data: FamilyMember): FamilyMember => {
+  if (!data) return {} as FamilyMember;
+  if (isNotEmptyString(data.extra)) {
+    data.spread = JSON.parse(data.extra);
+  }
+  return data;
+};

@@ -1,0 +1,55 @@
+<h2>{{pageTitle}}</h2>
+<form (ngSubmit)="addMember()">
+	<mat-form-field>
+		<mat-label>姓名</mat-label>
+		<input matInput [(ngModel)]="member.name" name="name" placeholder="朱元璋" required />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>拼音</mat-label>
+		<input matInput [(ngModel)]="member.pin_yin" name="pin_yin" placeholder="zhū yuán zhāng" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>性别</mat-label>
+		<mat-select name="gender" [(ngModel)]="member.gender">
+			<mat-option [value]="0">未知❓</mat-option>
+			<mat-option [value]="1">男♂️</mat-option>
+			<mat-option [value]="2">女♀️</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>父</mat-label>
+		<input matInput [(ngModel)]="member.father_id" name="father_id" placeholder="父亲的id，-1表示未知" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>母</mat-label>
+		<input matInput [(ngModel)]="member.mother_id" name="mother" placeholder="母亲的id，-1表示未知" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>诞辰</mat-label>
+		<input matInput [(ngModel)]="member.birthday" name="birthday" type="date">
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>祭日</mat-label>
+		<input matInput [(ngModel)]="member.deathday" name="deathday" type="date" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>头像</mat-label>
+		<input matInput [(ngModel)]="member.avatar_url" name="avatar_url" type="url" placeholder="头像链接" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>简介</mat-label>
+		<textarea matInput [(ngModel)]="member.summary" name="summary"></textarea>
+	</mat-form-field>
+	<div class="actions">
+		<a mat-stroked-button routerLink="/ming/list" type="reset">
+			<mat-icon>arrow_back</mat-icon>
+			返回清单
+		</a>
+		<button mat-flat-button color="primary" type="submit" [disabled]="loading">
+			<mat-icon>send</mat-icon>
+			提交
+		</button>
+	</div>
+</form>
+<div *ngIf="error" style="color:red">{{error}}</div>
+<div *ngIf="success" style="color:green">添加成功！</div>

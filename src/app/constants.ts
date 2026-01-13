@@ -43,10 +43,9 @@ export const MESSAGE = APP_LOCALE.zh
 Object.freeze(MESSAGE);
 
 /** assets url path */
-// export const ASSETS_BASE_URL = "https://johnzhu.cn/blog/";
 export const ASSETS_BASE_URL = `${APP_HOST}/blog/`;
 /** api url path */
-export const API_BASE_URL = `${APP_HOST}/api/`;
+export const API_BASE_URL = environment.production ? `${APP_HOST}/api/` : "http://localhost:8000/api/"; // dev
 /** how long an information message disappeared */
 export const MESSAGE_DURATION_INFO = 4096;
 /** how long an error message disappeared */

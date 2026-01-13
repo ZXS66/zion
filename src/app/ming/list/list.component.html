@@ -1,57 +1,58 @@
+<h2>{{pageTitle}}</h2>
+<div class="actions">
+	<a mat-flat-button routerLink="/ming/entry">
+		<mat-icon>add</mat-icon>
+		添加新成员
+	</a>
+</div>
 <div class="mat-elevation-z1">
-  @if (loadingStatus===0) {
-    <!-- loading in progress -->
-    <mat-spinner></mat-spinner>
-  }
-  @else if(loadingStatus===1) {
-  <div class="table-container">
-    <table mat-table [dataSource]="data">
-      <ng-container matColumnDef="人物">
-        <th mat-header-cell *matHeaderCellDef>人物</th>
-        <td mat-cell *matCellDef="let row">
-          {{row.pin_yin}}<br/>{{row.name}}
-          <br/>生卒：{{row.birthday}}-{{row.deathday}}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="年号庙号封号">
-        <th mat-header-cell *matHeaderCellDef>年号庙号封号</th>
-        <td mat-cell *matCellDef="let row">
-          @if(row['status']==='emperor') {
-            <!-- 皇帝 -->
-            👑{{row['庙号']}}，年号：{{row['年号']}}
-          }
-          @else if(row['status']==='prince') {
-            <!-- 藩王 -->
-            🤴{{row['封号或身份']}}
-          }
-          @else {
-            <span class="mat-small text-delete">幼殇/未封藩王</span>
-          }
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="主要政绩或备注">
-        <th mat-header-cell *matHeaderCellDef>主要政绩或备注</th>
-        <td mat-cell *matCellDef="let row">{{row.summary}}</td>
-      </ng-container>
-      <ng-container matColumnDef="在位时间">
-        <th mat-header-cell *matHeaderCellDef>在位时间</th>
-        <td mat-cell *matCellDef="let row">{{row.extra['在位时间']}}</td>
-      </ng-container>
-      <ng-container matColumnDef="父母">
-        <th mat-header-cell *matHeaderCellDef>父母</th>
-        <td mat-cell *matCellDef="let row">父：{{row['父亲']}}，母：{{row['母亲']}}</td>
-      </ng-container>
+	@if (loadingStatus===0) {
+	<!-- loading in progress -->
+	<mat-spinner></mat-spinner>
+	}
+	@else if(loadingStatus===1) {
+	<div class="table-container">
+		<table mat-table [dataSource]="data">
+			<ng-container matColumnDef="actions">
+				<th mat-header-cell *matHeaderCellDef>操作</th>
+				<td mat-cell *matCellDef="let row">
+					<a mat-icon-button [routerLink]="['/ming/profile', row.id]" title="更新">
+						<mat-icon>edit</mat-icon>
+					</a>
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="人物">
+				<th mat-header-cell *matHeaderCellDef>人物</th>
+				<td mat-cell *matCellDef="let row">
+					{{row.name}}({{row.pin_yin}})
+					<br />生卒：{{row.birthday || '?'}}➡️{{row.deathday || '?'}}
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="年号封号谥号">
+				<th mat-header-cell *matHeaderCellDef>年号封号谥号</th>
+				<td mat-cell *matCellDef="let row">
+					{{row.spread?.['年号']}}
+					{{row.spread?.['封号']}}
+					{{row.spread?.['谥号']}}
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="简介">
+				<th mat-header-cell *matHeaderCellDef>简介</th>
+				<td mat-cell *matCellDef="let row">{{row.summary}}</td>
+			</ng-container>
+			<ng-container matColumnDef="在位时间">
+				<th mat-header-cell *matHeaderCellDef>在位时间</th>
+				<td mat-cell *matCellDef="let row">{{row.spread?.['在位时间']}}</td>
+			</ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </div>
-
-  <!-- <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator> -->
-
-  }
-  @else if(loadingStatus===2) {
-    <!-- error occurred -->
-    <p class="body-2">error occurred.</p>
-  }
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		</table>
+	</div>
+	<!-- <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator> -->
+	}
+	@else if(loadingStatus===2) {
+	<!-- error occurred -->
+	<p class="body-2">error occurred.</p>
+	}
 </div>

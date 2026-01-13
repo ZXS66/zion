@@ -7,17 +7,20 @@
 <!-- <p>天气服务API状态：{{serviceReady?'🟢':'🔴'}}</p> -->
 <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="onTabChange($event)">
   <mat-tab label="实况天气">
-    <ng-container *ngIf="resultData&&resultData.lives&&resultData.lives.length" [ngTemplateOutlet]="lives" [ngTemplateOutletContext]="{data:resultData.lives[0]}">
+    <ng-container *ngIf="resultData&&resultData.lives&&resultData.lives.length" [ngTemplateOutlet]="lives"
+      [ngTemplateOutletContext]="{data:resultData.lives[0]}">
     </ng-container>
   </mat-tab>
   <mat-tab label="未来三天预报天气">
-    <ng-container *ngIf="resultData&&resultData.forecasts&&resultData.forecasts.length" [ngTemplateOutlet]="forecast" [ngTemplateOutletContext]="{data:resultData.forecasts[0]}">
+    <ng-container *ngIf="resultData&&resultData.forecasts&&resultData.forecasts.length" [ngTemplateOutlet]="forecast"
+      [ngTemplateOutletContext]="{data:resultData.forecasts[0]}">
     </ng-container>
   </mat-tab>
 </mat-tab-group>
 
 <ng-template #lives let-data="data">
-  <mat-list role="list" [style.background-image]="getBg(data.weather)" style="background-repeat: no-repeat;background-size: cover;">
+  <mat-list role="list" [style.background-image]="getBg(data.weather)"
+    style="background-repeat: no-repeat;background-size: cover;">
     <mat-list-item role="listitem">
       <div>
         <i class="weather-icon" [ngClass]="data.weather" [title]="data.weather"></i>
@@ -28,44 +31,43 @@
       <p>🌡️{{data.temperature}}℃</p>
     </mat-list-item>
     <mat-list-item role="listitem">
-      <img [src]="icons.wind" alt="风力"/>{{data.winddirection}}风{{data.windpower}}级
+      <img [src]="icons.wind" alt="风力" />{{data.winddirection}}风{{data.windpower}}级
     </mat-list-item>
     <mat-list-item role="listitem">
-      <img [src]="icons.humidity" alt="湿度"/>相对湿度{{data.humidity|number:'1.0-0'}}%
+      <img [src]="icons.humidity" alt="湿度" />相对湿度{{data.humidity|number:'1.0-0'}}%
     </mat-list-item>
   </mat-list>
   <footer class="mat-caption">{{data.reporttime | date:'shortTime'}}实况</footer>
 </ng-template>
 
 <ng-template #forecast let-data="data">
-  <mat-grid-list cols="4" rowHeight="62vh" gutterSize="0.25em">
-    <mat-grid-tile *ngFor="let item of data.casts;let i=index" [style.background-image]="getBg(item.dayweather)">
-      <article>
-        <p>
-          {{i===0?'今天':i===1?'明天':i===2?'后天':'大后天'}}，
-          {{item.date|date:'M月d日'}}，
-          周{{parseWeek(item.week)}}
-        </p>
-        <p>
-          <!-- 白天天气现象 -->
-          {{item.dayweather}}
-          <!-- 晚上天气现象 -->
-          <ng-container *ngIf="item.nightweather!==item.dayweather">
-            转{{item.nightweather}}
-          </ng-container>
-        </p>
-        <p>🌡️{{item.nighttemp}}-{{item.daytemp}}℃</p>
-        <p>
-          <img [src]="icons.wind" alt="风力"/>
-          <!-- 白天风向 -->
-          {{item.daywind}}风{{item.daypower}}级
-          <!-- 晚上风向 -->
-          <ng-container *ngIf="item.nightwind!==item.daywind">
-            转{{item.nightwind}}风{{item.nightpower}}级
-          </ng-container>
-        </p>
-      </article>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="flex">
+    <article class="col-3 col-sm-6" *ngFor="let item of data.casts;let i=index"
+      [style.background-image]="getBg(item.dayweather)">
+      <p>
+        {{i===0?'今天':i===1?'明天':i===2?'后天':'大后天'}}，
+        {{item.date|date:'M月d日'}}，
+        周{{parseWeek(item.week)}}
+      </p>
+      <p>
+        <!-- 白天天气现象 -->
+        {{item.dayweather}}
+        <!-- 晚上天气现象 -->
+        <ng-container *ngIf="item.nightweather!==item.dayweather">
+          转{{item.nightweather}}
+        </ng-container>
+      </p>
+      <p>🌡️{{item.nighttemp}}-{{item.daytemp}}℃</p>
+      <p>
+        <img [src]="icons.wind" alt="风力" />
+        <!-- 白天风向 -->
+        {{item.daywind}}风{{item.daypower}}级
+        <!-- 晚上风向 -->
+        <ng-container *ngIf="item.nightwind!==item.daywind">
+          转{{item.nightwind}}风{{item.nightpower}}级
+        </ng-container>
+      </p>
+    </article>
+  </div>
   <footer class="mat-caption">{{data.reporttime | date:'shortTime'}}实况</footer>
 </ng-template>

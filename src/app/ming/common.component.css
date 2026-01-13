@@ -1,0 +1,14 @@
+form{
+    width: 90%;
+    margin: 0 auto;
+}
+
+mat-form-field{
+    display: block;
+}
+
+.actions{
+    display: flex;
+    justify-content:space-around;
+    margin: 2em auto;
+}

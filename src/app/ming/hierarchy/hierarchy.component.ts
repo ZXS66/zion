@@ -9,9 +9,9 @@ import { isNotEmptyArray } from "src/app/utils";
   selector: "ming-hierarchy",
   imports: [],
   templateUrl: "./hierarchy.component.html",
-  styleUrl: "./hierarchy.component.css",
+	styleUrls: ["../common.component.css"],
 })
-export class HierarchyComponent {
+export class MingHierarchyComponent {
   // https://github.com/gramps-project/gramps/blob/maintenance/gramps60/INSTALL
 
   loadingStatus: number = 0; // 0: loading, 1: loaded, 2: error

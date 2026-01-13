@@ -1,51 +1,52 @@
+import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import {
-  MatTableModule,
-  MatTableDataSource,
-  MatHeaderRowDef,
-  MatRowDef,
-} from "@angular/material/table";
+import { FormsModule } from "@angular/forms";
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
-import { API_BASE_URL, API_TOKEN, ASSETS_BASE_URL } from "src/app/constants";
-import { environment } from "src/environments/environment";
-import { FamilyMember } from "src/app/ming/ming.models";
-import { isNotEmptyArray } from "src/app/utils";
+import { SubMaterialModule } from "src/app/sub-material/sub-material.module";
+import { FamilyMember, normFamilyMember } from "src/app/ming/ming.models";
+import { FamilyService } from "../services/family.service";
+import { DocumentTitleService } from "src/app/services/common.service";
+import { isNotEmptyArray, isNotEmptyString } from "src/app/utils";
 
 @Component({
   selector: "ming-list",
   templateUrl: "./list.component.html",
-  styleUrl: "./list.component.css",
-  // standalone: false,
-  imports: [MatTableModule],
+  styleUrl: "../common.component.css",
+  imports: [
+    CommonModule,
+    FormsModule,
+    SubMaterialModule,
+    // RouterOutlet,
+    RouterLink,
+    // RouterLinkActive
+  ],
 })
-export class ListComponent implements OnInit {
+export class MingListComponent implements OnInit {
+  pageTitle = "明朝皇室清单";
+
   loadingStatus: number = 0; // 0: loading, 1: loaded, 2: error
 
   displayedColumns: string[] = [
+    "actions",
     "人物",
     // "status",
-    "父母",
-    "年号庙号封号",
-    "在位时间",
+    // "父母",
+    "年号封号谥号",
+    // "在位时间",
     // "生卒",
-    "主要政绩或备注",
+    "简介",
     // "子嗣数量",
   ];
 
   data: FamilyMember[] = [];
+  public constructor(private _http: FamilyService, private _title: DocumentTitleService) { }
 
   ngOnInit(): void {
-    const params = new URLSearchParams();
-    params.set("q", "");
-    const fileLink = `${API_BASE_URL}family/members/?${params}`;
-    fetch(fileLink, {
-      method: "GET",
-      headers: { "x-token": API_TOKEN, "Content-Type": "application/json" },
-    })
-      .then((response) => response.json())
+    this._title.setTitle(this.pageTitle);
+    this._http.searchFamilyMembers("")
       .then((data) => {
-        this.data = this._normalizeData(data);
-        // console.table(this.data);
+        this.data = isNotEmptyArray(data) ? data.map(normFamilyMember) : [];
         this.loadingStatus = 1;
       })
       .catch((error) => {
@@ -54,20 +55,4 @@ export class ListComponent implements OnInit {
       });
   }
 
-  private _normalizeData(data: FamilyMember[]): FamilyMember[] {
-    if (!isNotEmptyArray(data)) return [];
-    const id_name = data.reduce(
-      (acc, item) => {
-        acc[item.id] = item.name;
-        return acc;
-      },
-      {} as Record<string, string>,
-    );
-    return data.map((item) => {
-      return {
-        ...item,
-        父亲: id_name[item.father_id] || "未知",
-      };
-    });
-  }
 }
