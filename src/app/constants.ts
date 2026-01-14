@@ -17,10 +17,9 @@ export const APP_LOCALE = {
 Object.freeze(APP_LOCALE);
 /** application name */
 export const APP_NAME = "ZXS66";
-/** application version */
-export const APP_VERSION = environment.version;
+/** application build time */
+export const APP_BUILTTIME = environment.builtTime;
 export const APP_HOST = environment.host;
-
 /** user email for sending feedback */
 export const FEEDBACK_EMAIL = "zh_cn2008@hotmail.com";
 

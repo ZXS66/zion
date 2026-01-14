@@ -2,11 +2,11 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import zion from "../../package.json";
+const today = new Date();
 
 export const environment = {
   production: false,
-  version: zion.version,
+  builtTime: `${today.getFullYear()}.${(today.getMonth() + 1)}.${today.getDate()}`,
   locale: "en",
   host: "https://localhost:4200",
   apiToken: "I'm blind, not dead.",
