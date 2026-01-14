@@ -1,15 +1,37 @@
-form{
-    margin: 0 auto;
+form {
+	margin: 0 auto;
 }
 
-mat-form-field{
-    display: block;
+mat-form-field {
+	display: block;
 }
 
-.actions{
-    display: flex;
-    justify-content:center;
-    row-gap: 1em;
-    column-gap: 1em;
-    flex-wrap: wrap;
+.actions {
+	display: flex;
+	justify-content: center;
+	row-gap: 1em;
+	column-gap: 1em;
+	flex-wrap: wrap;
+}
+
+.node {
+	display: flex;
+	align-items: center;
+}
+
+.children {
+	border-left: 1px solid silver;
+	margin-left: 1.7em;
+	overflow: hidden;
+}
+
+.children.collapse {
+	max-height: 0;
+}
+
+.dash {
+	display: inline-block;
+	width: 3.4em;
+	height: 1px;
+	border-top: 1px solid silver;
 }

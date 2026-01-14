@@ -21,7 +21,7 @@
 		<mat-select name="father_id" [(ngModel)]="member.father_id">
 			<mat-option>未知</mat-option>
 			@for (nm of males;track nm.value) {
-			<mat-option [value]="nm.value">{{nm.name}} (🆔{{nm.value}})</mat-option>
+			<mat-option [value]="nm.value">{{nm.name}}</mat-option>
 			}
 		</mat-select>
 	</mat-form-field>
@@ -30,7 +30,7 @@
 		<mat-select name="mother_id" [(ngModel)]="member.mother_id">
 			<mat-option>未知</mat-option>
 			@for (nm of females;track nm.value) {
-			<mat-option [value]="nm.value">{{nm.name}} (🆔{{nm.value}})</mat-option>
+			<mat-option [value]="nm.value">{{nm.name}}</mat-option>
 			}
 		</mat-select>
 	</mat-form-field>

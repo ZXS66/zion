@@ -1,52 +1,36 @@
 import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
 
-import { ASSETS_BASE_URL } from "src/app/constants";
-import { environment } from "src/environments/environment";
-import { FamilyMember } from "src/app/ming/ming.models";
-import { isNotEmptyArray } from "src/app/utils";
+import { MESSAGE } from "src/app/constants";
+import { NameValueChildren } from "src/app/ming/ming.models";
+import { DocumentTitleService } from "src/app/services/common.service";
+import { FamilyService } from "../services/family.service";
+import { SubMaterialModule } from "src/app/sub-material/sub-material.module";
 
 @Component({
   selector: "ming-hierarchy",
-  imports: [],
   templateUrl: "./hierarchy.component.html",
-	styleUrls: ["../common.component.css"],
+  styleUrls: ["../common.component.css"],
+  imports: [CommonModule, SubMaterialModule, RouterModule],
 })
 export class MingHierarchyComponent {
-  // https://github.com/gramps-project/gramps/blob/maintenance/gramps60/INSTALL
+  pageTitle = "明朝皇室成员图";
 
-  loadingStatus: number = 0; // 0: loading, 1: loaded, 2: error
+  hierarchy: NameValueChildren = null;
 
-  data: FamilyMember[] = [];
-
+  message = MESSAGE;
+  constructor(
+    private _title: DocumentTitleService,
+    private _familySvc: FamilyService,
+  ) { }
   ngOnInit(): void {
-    const fileLink = environment.production
-      ? ASSETS_BASE_URL + `img/ming/ming_royal_family_complete.json`
-      : "assets/ming_royal_family_complete.json";
-    fetch(fileLink)
-      .then((response) => response.json())
+    this._title.setTitle(this.pageTitle);
+    this._familySvc
+      .queryHierarchy()
       .then((data) => {
-        this.data = this._normalizeData(data);
-        // console.table(this.data);
-        this.loadingStatus = 1;
+        this.hierarchy = data;
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        this.loadingStatus = 2;
-      });
-  }
-
-  private _normalizeData(data: FamilyMember[]): FamilyMember[] {
-    if (!isNotEmptyArray(data)) return [];
-    const id_name = data.reduce(
-      (acc, item) => {
-        acc[item.id] = item.name;
-        return acc;
-      },
-      {} as Record<string, string>,
-    );
-    return data.map((item) => ({
-      ...item,
-      父亲: id_name[item.father_id] || "未知",
-    }));
+      .catch((e) => console.error(e));
   }
 }

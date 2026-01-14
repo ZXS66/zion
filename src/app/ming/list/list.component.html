@@ -61,11 +61,15 @@
 	<p class="body-2">{{message.ERROR}}</p>
 	}
 </div>
-@if (manipulationMode){
 <div class="actions" style="padding: 1em 0;">
-	<a mat-flat-button routerLink="/ming/entry" queryParamsHandling="merge">
+	<a mat-stroked-button routerLink="/ming/hierarchy" queryParamsHandling="merge">
+		<mat-icon>account_tree</mat-icon>
+		成员结构图
+	</a>
+	@if (manipulationMode){
+	<a mat-flat-button color="primary" routerLink="/ming/entry" queryParamsHandling="merge">
 		<mat-icon>add</mat-icon>
 		添加新成员
 	</a>
+	}
 </div>
-}

@@ -1,1 +1,44 @@
-<p>hierarchy works!</p>
+<h2>{{pageTitle}}</h2>
+
+<ng-template #node let-d>
+	<div class="node">
+		@if (d.children&&d.children.length){
+			<button mat-icon-button (click)="d.collapse=!d.collapse">
+				@if (d.collapse){
+					<mat-icon>remove</mat-icon>
+				}
+				@else{
+					<mat-icon>add</mat-icon>
+				}
+			</button>
+		}
+		@else{
+			<span class="dash"></span>
+		}
+		<a mat-stroked-button [routerLink]="['/ming/profile', d.value]" queryParamsHandling="merge">
+			{{d.name}}
+		</a>
+	</div>
+	@if (d.children&&d.children.length){
+	<div class="children" [ngClass]="d.collapse?'collapse':'expand'">
+		<ng-container *ngFor="let child of d.children; let i = index">
+			@if (child){
+			<ng-container *ngTemplateOutlet="node; context:{ $implicit: child }"></ng-container>
+			}
+		</ng-container>
+	</div>
+	}
+</ng-template>
+
+<div class="actions">
+	<a mat-stroked-button routerLink="/ming/list" queryParamsHandling="merge" type="reset">
+		<mat-icon>arrow_back</mat-icon>
+		返回清单
+	</a>
+</div>
+@if (hierarchy){
+<ng-container *ngTemplateOutlet="node; context:{ $implicit: hierarchy }"></ng-container>
+}
+@else{
+<mat-spinner [title]="message.LOADING"></mat-spinner>
+}

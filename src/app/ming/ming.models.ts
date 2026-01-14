@@ -31,3 +31,7 @@ export interface NameValueTag {
   value: any;
   tag: any;
 }
+
+export interface NameValueChildren extends NameValueTag {
+  children: NameValueChildren[];
+}
