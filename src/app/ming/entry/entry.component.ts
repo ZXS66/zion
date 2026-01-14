@@ -2,11 +2,13 @@ import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MESSAGE } from "src/app/constants";
 
-import { FamilyMember } from "src/app/ming/ming.models";
+import { FamilyMember, NameValueTag } from "src/app/ming/ming.models";
 import { FamilyService } from "src/app/ming/services/family.service";
 import { DocumentTitleService } from "src/app/services/common.service";
 import { SubMaterialModule } from "src/app/sub-material/sub-material.module";
+import { isNotEmptyArray } from "src/app/utils";
 
 @Component({
 	selector: "ming-entry",
@@ -21,29 +23,40 @@ import { SubMaterialModule } from "src/app/sub-material/sub-material.module";
 })
 export class MingEntryComponent implements OnInit {
 	pageTitle = "添加明朝皇室成员";
-	member: Partial<FamilyMember> = {};
-	loading = false;
-	error: string | null = null;
-	success: boolean = false;
 
-	constructor(private familyService: FamilyService, private _title: DocumentTitleService) { }
+	loadingStatus: number = 0; // 0: loading, 1: loaded, 2: error
+
+	member: Partial<FamilyMember> = {};
+
+	message = MESSAGE;
+
+	males: NameValueTag[] = [];
+	females: NameValueTag[] = [];
+
+	constructor(private _familyService: FamilyService, private _title: DocumentTitleService) { }
 
 	ngOnInit(): void {
-		// Initialization logic if needed
 		this._title.setTitle(this.pageTitle);
+		this.loadNameMeta();
+	}
+	loadNameMeta() {
+		this._familyService.queryNameMeta()
+			.then((data) => {
+				if (isNotEmptyArray(data)) {
+					this.males = data.filter(item => item.tag === 1);
+					this.females = data.filter(item => item.tag === 2);
+				}
+			});
 	}
 
 	addMember() {
-		this.loading = true;
-		this.error = null;
-		this.familyService.addFamilyMember(this.member)
+		this.loadingStatus = 0;
+		this._familyService.addFamilyMember(this.member)
 			.then(() => {
-				this.success = true;
-				this.loading = false;
+				this.loadingStatus = 1;
 			})
 			.catch(() => {
-				this.error = "添加失败";
-				this.loading = false;
+				this.loadingStatus = 2;
 			});
 	}
 }

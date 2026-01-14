@@ -8,7 +8,8 @@
 		@else {
 		<mat-form-field>
 			<mat-label>头像</mat-label>
-			<input matInput [(ngModel)]="member.avatar_url" name="avatar_url" type="url" placeholder="头像链接" />
+			<input matInput [(ngModel)]="member.avatar_url" name="avatar_url" type="url" placeholder="头像链接"
+				[readonly]="!manipulationMode" />
 		</mat-form-field>
 		}
 		<mat-form-field>
@@ -21,7 +22,7 @@
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>性别</mat-label>
-			<mat-select name="gender" [(ngModel)]="member.gender" readonly>
+			<mat-select name="gender" [(ngModel)]="member.gender" [disabled]="!manipulationMode">
 				<mat-option [value]="0">未知❓</mat-option>
 				<mat-option [value]="1">男♂️</mat-option>
 				<mat-option [value]="2">女♀️</mat-option>
@@ -29,66 +30,102 @@
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>父</mat-label>
-			<input matInput [(ngModel)]="member.father_id" name="father_id" placeholder="父亲的id，-1表示未知" />
+			<mat-select name="father_id" [(ngModel)]="member.father_id" [disabled]="!manipulationMode">
+				<mat-option>未知</mat-option>
+				@for (nm of males;track nm.value) {
+				<mat-option [value]="nm.value">{{nm.name}} (🆔{{nm.value}})</mat-option>
+				}
+			</mat-select>
+			<!-- <input matInput [formControl]="fatherCtrl" [matAutocomplete]="autoFathers" />
+			<mat-autocomplete #autoFathers="matAutocomplete" (optionSelected)="selectFather($event.option.value)">
+				@for (option of filteredFathers | async; track option.value) {
+				<mat-option [value]="option.value">{{option.name}} (🆔{{option.value}})</mat-option>
+				}
+			</mat-autocomplete> -->
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>母</mat-label>
-			<input matInput [(ngModel)]="member.mother_id" name="mother" placeholder="母亲的id，-1表示未知" />
+			<mat-select name="mother_id" [(ngModel)]="member.mother_id" [disabled]="!manipulationMode">
+				<mat-option>未知</mat-option>
+				@for (nm of females;track nm.value) {
+				<mat-option [value]="nm.value">{{nm.name}} (🆔{{nm.value}})</mat-option>
+				}
+			</mat-select>
+			<!-- <input matInput [formControl]="motherCtrl" [matAutocomplete]="autoMothers" />
+			<mat-autocomplete #autoMothers="matAutocomplete" (optionSelected)="selectMother($event.option.value)">
+				@for (option of filteredMothers | async; track option.value) {
+				<mat-option [value]="option.value">{{option.name}} (🆔{{option.value}})</mat-option>
+				}
+			</mat-autocomplete> -->
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>诞辰</mat-label>
-			<input matInput [(ngModel)]="member.birthday" name="birthday" type="date">
+			<input matInput [(ngModel)]="member.birthday" name="birthday" type="date" [readonly]="!manipulationMode">
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>祭日</mat-label>
-			<input matInput [(ngModel)]="member.deathday" name="deathday" type="date" />
+			<input matInput [(ngModel)]="member.deathday" name="deathday" type="date" [readonly]="!manipulationMode" />
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>简介</mat-label>
-			<textarea matInput [(ngModel)]="member.summary" name="summary"></textarea>
+			<textarea matInput [(ngModel)]="member.summary" name="summary" [readonly]="!manipulationMode"></textarea>
 		</mat-form-field>
 	</fieldset>
 	<fieldset class="extra">
 		<legend>扩展信息</legend>
 		<div class="flex" *ngIf="extraInfo&&extraInfo.length">
 			<ng-container *ngFor="let kv of extraInfo; let i = index">
+				@if (manipulationMode) {
 				<div class="col-2">
 					<button mat-icon-button color="warn" (click)="removeExtra(i)" title="删除此扩展信息">
 						<mat-icon>delete</mat-icon>
 					</button>
 				</div>
-				<div class="col-5">
+				}
+				<div [ngClass]="manipulationMode?'col-5':'col-6'">
 					<mat-form-field>
 						<mat-label>键</mat-label>
-						<input matInput [(ngModel)]="kv[0]" name="{{kv[0]}}" [ngModelOptions]="{standalone: true}" [matAutocomplete]="autoCommonExtraKeys"/>
+						<input matInput [(ngModel)]="kv[0]" name="{{kv[0]}}" [ngModelOptions]="{standalone: true}"
+							[matAutocomplete]="autoCommonExtraKeys" [readonly]="!manipulationMode" />
 					</mat-form-field>
 				</div>
-				<div class="col-5">
+				<div [ngClass]="manipulationMode?'col-5':'col-6'">
 					<mat-form-field>
 						<mat-label>值</mat-label>
-						<input matInput [(ngModel)]="kv[1]" name="{{kv[1]}}" [ngModelOptions]="{standalone: true}" />
+						<input matInput [(ngModel)]="kv[1]" name="{{kv[1]}}" [ngModelOptions]="{standalone: true}"
+							[readonly]="!manipulationMode" />
 					</mat-form-field>
 				</div>
 			</ng-container>
 		</div>
+		@if (manipulationMode) {
 		<button mat-flat-button color="primary" (click)="addExtra()">
 			<mat-icon>add</mat-icon>
 			添加扩展信息
 		</button>
+		}
 	</fieldset>
 	<div class="actions">
-		<a mat-stroked-button routerLink="/ming/list" type="reset">
+		<mat-progress-bar *ngIf="loadingStatus===1" mode="indeterminate"></mat-progress-bar>
+		<div *ngIf="loadingStatus===2" style="color:green">更新成功！</div>
+		<div *ngIf="loadingStatus===3" style="color:red">{{message.ERROR}}</div>
+	</div>
+	<div class="actions" style="padding: 1em 0;">
+		<a mat-stroked-button routerLink="/ming/list" queryParamsHandling="merge" type="reset">
 			<mat-icon>arrow_back</mat-icon>
 			返回清单
 		</a>
-		<button mat-flat-button color="primary" type="submit" [disabled]="loading">
-			<mat-icon>update</mat-icon>
+		@if (manipulationMode) {
+		<button mat-flat-button color="primary" type="submit" [disabled]="loadingStatus!==0">
+			<mat-icon *ngIf="loadingStatus===0">update</mat-icon>
+			<mat-icon *ngIf="loadingStatus===1">loading</mat-icon>
+			<mat-icon *ngIf="loadingStatus===2">check</mat-icon>
+			<mat-icon *ngIf="loadingStatus===3">error</mat-icon>
 			更新
 		</button>
+		}
 	</div>
 </form>
-<div *ngIf="error" style="color:red">{{error}}</div>
-<div *ngIf="success" style="color:green">更新成功！</div>
 <mat-autocomplete #autoCommonExtraKeys="matAutocomplete">
 	@for (option of commonExtraKeys; track option) {
 	<mat-option [value]="option">{{option}}</mat-option>

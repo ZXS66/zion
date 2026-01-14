@@ -1,5 +1,4 @@
 form{
-    width: 90%;
     margin: 0 auto;
 }
 
@@ -9,6 +8,8 @@ mat-form-field{
 
 .actions{
     display: flex;
-    justify-content:space-around;
-    margin: 2em auto;
+    justify-content:center;
+    row-gap: 1em;
+    column-gap: 1em;
+    flex-wrap: wrap;
 }

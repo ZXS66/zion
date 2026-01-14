@@ -18,11 +18,21 @@
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>父</mat-label>
-		<input matInput [(ngModel)]="member.father_id" name="father_id" placeholder="父亲的id，-1表示未知" />
+		<mat-select name="father_id" [(ngModel)]="member.father_id">
+			<mat-option>未知</mat-option>
+			@for (nm of males;track nm.value) {
+			<mat-option [value]="nm.value">{{nm.name}} (🆔{{nm.value}})</mat-option>
+			}
+		</mat-select>
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>母</mat-label>
-		<input matInput [(ngModel)]="member.mother_id" name="mother" placeholder="母亲的id，-1表示未知" />
+		<mat-select name="mother_id" [(ngModel)]="member.mother_id">
+			<mat-option>未知</mat-option>
+			@for (nm of females;track nm.value) {
+			<mat-option [value]="nm.value">{{nm.name}} (🆔{{nm.value}})</mat-option>
+			}
+		</mat-select>
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>诞辰</mat-label>
@@ -41,15 +51,18 @@
 		<textarea matInput [(ngModel)]="member.summary" name="summary"></textarea>
 	</mat-form-field>
 	<div class="actions">
-		<a mat-stroked-button routerLink="/ming/list" type="reset">
+		<div *ngIf="loadingStatus===2" style="color:red">{{message.ERROR}}</div>
+		<div *ngIf="loadingStatus===1" style="color:green">添加成功！</div>
+	</div>
+	<div class="actions" style="padding: 1em 0;">
+		<a mat-stroked-button routerLink="/ming/list" type="reset" queryParamsHandling="merge">
 			<mat-icon>arrow_back</mat-icon>
 			返回清单
 		</a>
-		<button mat-flat-button color="primary" type="submit" [disabled]="loading">
-			<mat-icon>send</mat-icon>
+		<button mat-flat-button color="primary" type="submit" [disabled]="loadingStatus!==0">
+			<mat-icon *ngIf="loadingStatus===0">send</mat-icon>
+			<mat-icon *ngIf="loadingStatus===1">check</mat-icon>
 			提交
 		</button>
 	</div>
 </form>
-<div *ngIf="error" style="color:red">{{error}}</div>
-<div *ngIf="success" style="color:green">添加成功！</div>

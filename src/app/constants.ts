@@ -4,15 +4,15 @@ import { environment } from "src/environments/environment";
 
 /** current locale */
 export const APP_LOCALE = {
-  /** English */
-  get en(): boolean {
-    return environment.locale === "en";
-  },
-  /** 简体中文 */
-  get zh(): boolean {
-    return environment.locale === "zh";
-  },
-  /// TODO: support more locales
+	/** English */
+	get en(): boolean {
+		return environment.locale === "en";
+	},
+	/** 简体中文 */
+	get zh(): boolean {
+		return environment.locale === "zh";
+	},
+	/// TODO: support more locales
 };
 Object.freeze(APP_LOCALE);
 /** application name */
@@ -26,21 +26,33 @@ export const FEEDBACK_EMAIL = "zh_cn2008@hotmail.com";
 
 /** friendly messages */
 export const MESSAGE = APP_LOCALE.zh
-  ? {
-      ///// /** messages (中文) */
-      INITIAL: "页面加载中...",
-      LOADING: "加载中，请稍后。。。",
-      EMPTY: "无结果返回。",
-      ERROR: `发生异常，请联系 ${FEEDBACK_EMAIL}，谢谢！`,
-    }
-  : {
-      /////  /** messages (english) */
-      INITIAL: "page loading...",
-      LOADING: "loading, please wait...",
-      EMPTY: "no result returned.",
-      ERROR: `error occurred, please contact ${FEEDBACK_EMAIL}, thanks!`,
-    };
+	? {
+		///// /** messages (中文) */
+		INITIAL: "页面加载中...",
+		LOADING: "加载中，请稍后。。。",
+		EMPTY: "无结果返回。",
+		ERROR: `发生异常，请联系 ${FEEDBACK_EMAIL}，谢谢！`,
+	}
+	: {
+		/////  /** messages (english) */
+		INITIAL: "page loading...",
+		LOADING: "loading, please wait...",
+		EMPTY: "no result returned.",
+		ERROR: `error occurred, please contact ${FEEDBACK_EMAIL}, thanks!`,
+	};
 Object.freeze(MESSAGE);
+
+/** loading status of requests */
+export enum LOADING_STATUS {
+	/** ready to load */
+	READY = 0,
+	/** loading in progress */
+	LOADING = 1,
+	/** successfully loaded */
+	LOADED = 2,
+	/** load failed with error(s) */
+	ERROR = 3
+};
 
 /** assets url path */
 export const ASSETS_BASE_URL = `${APP_HOST}/blog/`;
