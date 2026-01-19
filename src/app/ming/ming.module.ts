@@ -3,8 +3,8 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import {
-  provideHttpClient,
-  withInterceptorsFromDi,
+	provideHttpClient,
+	withInterceptorsFromDi,
 } from "@angular/common/http";
 
 import { FamilyService } from "./services/family.service";
@@ -14,30 +14,33 @@ import { MingListComponent } from "src/app/ming/list/list.component";
 import { MingHierarchyComponent } from "src/app/ming/hierarchy/hierarchy.component";
 import { MingEntryComponent } from "src/app/ming/entry/entry.component";
 import { MingProfileComponent } from "src/app/ming/profile/profile.component";
+import { MingTreeComponent } from "./tree/tree.component";
 
 const mingRoutes: Routes = [
-  { path: "list", component: MingListComponent },
-  { path: "hierarchy", component: MingHierarchyComponent },
-  { path: "entry", component: MingEntryComponent },
-  { path: "profile/:id", component: MingProfileComponent },
-  { path: "", redirectTo: "list", pathMatch: "full" },
+	{ path: "entry", component: MingEntryComponent },
+	{ path: "hierarchy", component: MingHierarchyComponent },
+	{ path: "list", component: MingListComponent },
+	{ path: "profile/:id", component: MingProfileComponent },
+	{ path: "tree", component: MingTreeComponent },
+	{ path: "", redirectTo: "list", pathMatch: "full" },
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule.forChild(mingRoutes),
-    SubMaterialModule,
-    MingListComponent,
-    MingHierarchyComponent,
-    MingEntryComponent,
-    MingProfileComponent,
-  ],
-  providers: [
-    provideHttpClient(withInterceptorsFromDi()),
-    FamilyService
-  ],
+	declarations: [],
+	imports: [
+		CommonModule,
+		FormsModule,
+		RouterModule.forChild(mingRoutes),
+		SubMaterialModule,
+		MingEntryComponent,
+		MingHierarchyComponent,
+		MingListComponent,
+		MingProfileComponent,
+		MingTreeComponent,
+	],
+	providers: [
+		provideHttpClient(withInterceptorsFromDi()),
+		FamilyService
+	],
 })
-export class MingModule {}
+export class MingModule { }

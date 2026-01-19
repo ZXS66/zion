@@ -2,5 +2,6 @@
 	"editor.insertSpaces": false,
 	"editor.indentSize": "tabSize",
 	"editor.tabSize": 4,
-	"editor.tabCompletion": "on"
+	"editor.tabCompletion": "on",
+	"editor.formatOnSave": true
 }
