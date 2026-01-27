@@ -25,6 +25,12 @@ export class SitemapComponent implements OnInit {
         faGrin,
       ),
       new SitemapItem(
+        "/ming/list",
+        "大明皇室",
+        "大明朝皇帝及其子嗣清单",
+        faUser,
+      ),
+      new SitemapItem(
         "/lab/weather",
         "Weather Forecast",
         "view live weather and forecast by city",
@@ -43,9 +49,9 @@ export class SitemapComponent implements OnInit {
   /** icon for the link which does not assigned */
   noIcon = faCircle;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
 /** sitemap group of links */
 export class SitemapGroup {
@@ -54,7 +60,7 @@ export class SitemapGroup {
     public name: string,
     public introduction = "",
     public children: (SitemapGroup | SitemapItem)[] = [],
-  ) {}
+  ) { }
 }
 
 /** sitemap link item */
@@ -67,5 +73,5 @@ export class SitemapItem {
     /** brief of the link */
     public introduction: string = "",
     public icon: IconDefinition = null,
-  ) {}
+  ) { }
 }

@@ -1,5 +1,5 @@
-import { AsyncPipe, CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import { LOADING_STATUS, MESSAGE } from "src/app/constants";
@@ -21,7 +21,7 @@ import { isNotEmptyArray, isNotEmptyString } from "src/app/utils";
 		SubMaterialModule,
 	],
 })
-export class MingProfileComponent implements OnInit {
+export class MingProfileComponent implements OnInit, OnDestroy {
 	pageTitle = "明朝皇室成员详情";
 
 	memberId: number | null = null;
@@ -87,6 +87,8 @@ export class MingProfileComponent implements OnInit {
 		this.extraInfo.splice(index, 1);
 	}
 
+	_backTimer = null;
+
 	updateMember() {
 		if (!this.memberId) return;
 		// prepare the form data
@@ -101,9 +103,17 @@ export class MingProfileComponent implements OnInit {
 		this._familyService.updateFamilyMember(this.memberId, this.member)
 			.then(() => {
 				this.loadingStatus = LOADING_STATUS.LOADED;
+				this._backTimer = setTimeout(() => {
+					window.history.back();
+				}, 2048);
 			})
 			.catch(() => {
 				this.loadingStatus = LOADING_STATUS.ERROR;
 			});
+	}
+	ngOnDestroy(): void {
+		if (this._backTimer) {
+			clearTimeout(this._backTimer);
+		}
 	}
 }

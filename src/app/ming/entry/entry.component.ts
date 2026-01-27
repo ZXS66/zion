@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { MESSAGE } from "src/app/constants";
+import { LOADING_STATUS, MESSAGE } from "src/app/constants";
 
 import { FamilyMember, NameValueTag } from "src/app/ming/ming.models";
 import { FamilyService } from "src/app/ming/services/family.service";
@@ -21,14 +21,13 @@ import { isNotEmptyArray } from "src/app/utils";
 		RouterLink,
 	],
 })
-export class MingEntryComponent implements OnInit {
+export class MingEntryComponent implements OnInit, OnDestroy {
 	pageTitle = "添加明朝皇室成员";
-
-	loadingStatus: number = 0; // 0: loading, 1: loaded, 2: error
 
 	member: Partial<FamilyMember> = {};
 
 	message = MESSAGE;
+	loadingStatus: LOADING_STATUS = LOADING_STATUS.READY;
 
 	males: NameValueTag[] = [];
 	females: NameValueTag[] = [];
@@ -48,15 +47,24 @@ export class MingEntryComponent implements OnInit {
 				}
 			});
 	}
+	_backTimer: any = null;
 
 	addMember() {
-		this.loadingStatus = 0;
+		this.loadingStatus = LOADING_STATUS.LOADING;
 		this._familyService.addFamilyMember(this.member)
 			.then(() => {
-				this.loadingStatus = 1;
+				this.loadingStatus = LOADING_STATUS.LOADED;
+				this._backTimer = setTimeout(() => {
+					window.history.back();
+				}, 2048);
 			})
 			.catch(() => {
-				this.loadingStatus = 2;
+				this.loadingStatus = LOADING_STATUS.ERROR;
 			});
+	}
+	ngOnDestroy(): void {
+		if (this._backTimer) {
+			clearTimeout(this._backTimer);
+		}
 	}
 }

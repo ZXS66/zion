@@ -174,9 +174,8 @@ export class MingTreeComponent implements OnInit {
 				.attr("stroke", "white")
 				.attr("paint-order", "stroke")
 				.attr("fill", (d: HierarchyNode) =>
-					d.data.tag === '皇帝' ? "red" : "initial",
+					d.data.tag === '皇帝' ? "red" : (d.data.tag === '南明皇帝' ? "blue" : "initial"),
 				);
-
 			// Transition nodes to their new position.
 			node
 				.merge(nodeEnter)

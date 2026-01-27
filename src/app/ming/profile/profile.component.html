@@ -30,8 +30,8 @@
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>父</mat-label>
-			<mat-select name="father_id" [(ngModel)]="member.father_id" [disabled]="!manipulationMode">
-				<mat-option>未知</mat-option>
+			<mat-select name="father_id" [(ngModel)]="member.father_id" [disabled]="!manipulationMode" title="-1表示未知">
+				<mat-option [value]="-1">未知</mat-option>
 				@for (nm of males;track nm.value) {
 				<mat-option [value]="nm.value">{{nm.name}}</mat-option>
 				}
@@ -45,8 +45,8 @@
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>母</mat-label>
-			<mat-select name="mother_id" [(ngModel)]="member.mother_id" [disabled]="!manipulationMode">
-				<mat-option>未知</mat-option>
+			<mat-select name="mother_id" [(ngModel)]="member.mother_id" [disabled]="!manipulationMode" title="-1表示未知">
+				<mat-option [value]="-1">未知</mat-option>
 				@for (nm of females;track nm.value) {
 				<mat-option [value]="nm.value">{{nm.name}}</mat-option>
 				}
@@ -107,7 +107,7 @@
 	</fieldset>
 	<div class="actions">
 		<mat-progress-bar *ngIf="loadingStatus===1" mode="indeterminate"></mat-progress-bar>
-		<div *ngIf="loadingStatus===2" style="color:green">更新成功！</div>
+		<div *ngIf="loadingStatus===2" style="color:green">更新成功，2秒后自动跳转。</div>
 		<div *ngIf="loadingStatus===3" style="color:red">{{message.ERROR}}</div>
 	</div>
 	<div class="actions" style="padding: 1em 0;">
