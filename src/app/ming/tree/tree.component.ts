@@ -7,8 +7,9 @@ import * as d3 from "d3";
 import { MESSAGE } from "src/app/constants";
 import { NameValueChildren } from "src/app/ming/ming.models";
 import { DocumentTitleService } from "src/app/services/common.service";
-import { FamilyService } from "../services/family.service";
+import { FamilyService } from "src/app/ming/services/family.service";
 import { SubMaterialModule } from "src/app/sub-material/sub-material.module";
+import { getCache, setCache, cache } from "src/app/cacheHelper"
 
 // D3 类型声明
 interface NameValueChildrenData {
@@ -113,7 +114,8 @@ export class MingTreeComponent implements OnInit {
 			.attr("cursor", "pointer")
 			.attr("pointer-events", "all");
 
-		function update(event: MouseEvent | null, source: HierarchyNode): void {
+		const obj2str = (obj) => Object.entries(obj).map((kv) => `${kv[0]}: ${kv[1]}`).join('\n');
+		const update = (event: MouseEvent | null, source: HierarchyNode) => {
 			const duration = event?.altKey ? 2500 : 250; // hold the alt key to slow down the transition
 			const nodes = root.descendants().reverse();
 			const links = root.links();
@@ -153,14 +155,16 @@ export class MingTreeComponent implements OnInit {
 				.on("click", (event: MouseEvent, d: HierarchyNode) => {
 					d.children = d.children ? null : d._children;
 					update(event, d);
+				})
+				.on("mouseenter", async (event: MouseEvent, d: HierarchyNode) => {
+					const data = await this._familySvc.getFamilyMember(+d.data.value);
+					(event.target as HTMLElement).lastElementChild.textContent = obj2str(data);
 				});
-
 			nodeEnter
 				.append("circle")
 				.attr("r", 2.5)
 				.attr("fill", (d: HierarchyNode) => (d._children ? "#555" : "#999"))
 				.attr("stroke-width", 10);
-
 			nodeEnter
 				.append("text")
 				.attr("dy", "0.31em")
@@ -176,6 +180,10 @@ export class MingTreeComponent implements OnInit {
 				.attr("fill", (d: HierarchyNode) =>
 					d.data.tag === '皇帝' ? "red" : (d.data.tag === '南明皇帝' ? "blue" : "initial"),
 				);
+			nodeEnter
+				.append("title")
+				.text("加载中…");
+
 			// Transition nodes to their new position.
 			node
 				.merge(nodeEnter)
